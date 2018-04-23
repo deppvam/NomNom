@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import <Firebase/Firebase.h>
+
 @interface AppDelegate ()
 
 @end
@@ -16,6 +18,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [FIRApp configure];
     // Override point for customization after application launch.
     return YES;
 }

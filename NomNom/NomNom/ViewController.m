@@ -33,6 +33,7 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
+    [YelpRequest makeYelpRequest:<#(NSString *)#> long:<#(NSString *)#> radius:3000 limit:<#(int)#> offset:30]
     // load all the information about the food
     [self.LikeViewContainer setHidden:YES];
     [self.LikedLabel setHidden:YES];
