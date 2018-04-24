@@ -51,7 +51,7 @@
     //Set up our URL request
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"GET"];
-    NSString *url = [NSString stringWithFormat:@"https://api.yelp.com/v3/businesses/search?location=%@,%@&radius=$d&limit=%d&offset=%d",latitude,longitude,rad,lim]; //change this to change the site we're pinging
+    NSString *url = [NSString stringWithFormat:@"https://api.yelp.com/v3/businesses/search?location=%@,%@&radius=%d&limit=%d&offset=%d",latitude,longitude,rad,lim]; //change this to change the site we're pinging
     NSString *header = [NSString stringWithFormat:@"Bearer %@",api_key];
     [request setURL:[NSURL URLWithString:url]];
     [request setValue:header forHTTPHeaderField:@"Authorization"];
