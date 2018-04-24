@@ -10,39 +10,39 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NomNom/ViewController.m"
-            timestampString = "545948896.1861989"
+            timestampString = "546289684.731806"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "-swipeGenerator:"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "-rightSwipeAction:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NomNom/ViewController.m"
-            timestampString = "545951698.959098"
+            timestampString = "546289684.732439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
             endingLineNumber = "30"
-            landmarkName = "likedFood"
+            landmarkName = "food"
             landmarkType = "24">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[ViewController likedFood]"
+                  symbolName = "-[ViewController food]"
                   moduleName = "NomNom"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Joanna/Documents/NYU/Spring18/IOSProg/NomNom/NomNom/NomNom/ViewController.m"
-                  timestampString = "545952276.925344"
+                  timestampString = "546288266.6440181"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "30"
@@ -50,14 +50,14 @@
                   offsetFromSymbolStart = "12">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[ViewController setLikedFood:]"
+                  symbolName = "-[ViewController setFood:]"
                   moduleName = "NomNom"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Joanna/Documents/NYU/Spring18/IOSProg/NomNom/NomNom/NomNom/ViewController.m"
-                  timestampString = "545952276.92902"
+                  timestampString = "546288266.647806"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "30"

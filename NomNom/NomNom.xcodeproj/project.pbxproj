@@ -19,7 +19,6 @@
 		9E76B661208A1C710010A34C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E76B660208A1C710010A34C /* main.m */; };
 		9E76B66B208A1C710010A34C /* NomNomTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E76B66A208A1C710010A34C /* NomNomTests.m */; };
 		9E76B676208A1C710010A34C /* NomNomUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E76B675208A1C710010A34C /* NomNomUITests.m */; };
-		9E76B685208A1E630010A34C /* Swiping.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E76B684208A1E630010A34C /* Swiping.m */; };
 		9E76B688208A20510010A34C /* YelpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E76B686208A20510010A34C /* YelpRequest.m */; };
 		9E76B68C208A29BF0010A34C /* Ramen.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9E76B68B208A29BF0010A34C /* Ramen.jpeg */; };
 		9E76B68F208A38B60010A34C /* FoodInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E76B68E208A38B60010A34C /* FoodInfo.m */; };
@@ -66,8 +65,6 @@
 		9E76B671208A1C710010A34C /* NomNomUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NomNomUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E76B675208A1C710010A34C /* NomNomUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NomNomUITests.m; sourceTree = "<group>"; };
 		9E76B677208A1C710010A34C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9E76B683208A1E630010A34C /* Swiping.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Swiping.h; sourceTree = "<group>"; };
-		9E76B684208A1E630010A34C /* Swiping.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Swiping.m; sourceTree = "<group>"; };
 		9E76B686208A20510010A34C /* YelpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpRequest.m; sourceTree = "<group>"; };
 		9E76B687208A20510010A34C /* YelpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpRequest.h; sourceTree = "<group>"; };
 		9E76B68B208A29BF0010A34C /* Ramen.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Ramen.jpeg; path = Assets.xcassets/Ramen.jpeg; sourceTree = "<group>"; };
@@ -162,8 +159,6 @@
 				9E76B693208A415D0010A34C /* cupcake.jpg */,
 				9E76B68E208A38B60010A34C /* FoodInfo.m */,
 				9E76B654208A1C6F0010A34C /* ViewController.h */,
-				9E76B683208A1E630010A34C /* Swiping.h */,
-				9E76B684208A1E630010A34C /* Swiping.m */,
 				9E76B655208A1C6F0010A34C /* ViewController.m */,
 				9E76B657208A1C6F0010A34C /* Main.storyboard */,
 				9E76B65A208A1C710010A34C /* Assets.xcassets */,
@@ -392,7 +387,6 @@
 				9E76B656208A1C6F0010A34C /* ViewController.m in Sources */,
 				9E76B68F208A38B60010A34C /* FoodInfo.m in Sources */,
 				9E76B688208A20510010A34C /* YelpRequest.m in Sources */,
-				9E76B685208A1E630010A34C /* Swiping.m in Sources */,
 				9E76B661208A1C710010A34C /* main.m in Sources */,
 				9E76B653208A1C6F0010A34C /* AppDelegate.m in Sources */,
 			);
@@ -566,7 +560,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = NomNom/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = nyu.edu.NomNom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -580,7 +577,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = NomNom/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = nyu.edu.NomNom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -594,7 +594,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = NomNomTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = nyu.edu.NomNomTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -609,7 +613,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = NomNomTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = nyu.edu.NomNomTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -623,7 +631,11 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = NomNomUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = nyu.edu.NomNomUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -637,7 +649,11 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = NomNomUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = nyu.edu.NomNomUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

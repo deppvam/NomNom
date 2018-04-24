@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #include <stdlib.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface ViewController : UIViewController
 

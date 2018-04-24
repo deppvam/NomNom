@@ -11,8 +11,9 @@
 #include <stdlib.h>
 #import <UIKit/UIKit.h>
 #import "FoodInfo.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface ViewController ()
+@interface ViewController () <CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UIView *LikeViewContainer;
 @property (weak, nonatomic) IBOutlet UILabel *LikedLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *LikedImage;
@@ -28,12 +29,26 @@
 @property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *RightSwipe;
 @property (strong, nonatomic) NSMutableDictionary *food;
 @property (strong, nonatomic) NSMutableDictionary *likedFood;
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, atomic) NSString *lon;
+@property (strong, atomic) NSString *lat;
+@property (strong, nonatomic) NSDictionary *requests;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
-    [YelpRequest makeYelpRequest:<#(NSString *)#> long:<#(NSString *)#> radius:3000 limit:<#(int)#> offset:30]
+    if ([CLLocationManager locationServicesEnabled]) {
+        self.locationManager = [[CLLocationManager alloc] init];
+        self.locationManager.delegate = self;
+        [self.locationManager requestWhenInUseAuthorization];
+        [self.locationManager startMonitoringSignificantLocationChanges];
+        [self.locationManager startUpdatingLocation];
+    } else {
+        NSLog(@"Location services are not enabled");
+    }
+    
+    self.requests = [YelpRequest makeYelpRequest:self.lat long:self.lon radius:3000 limit:50 offset:0];
     // load all the information about the food
     [self.LikeViewContainer setHidden:YES];
     [self.LikedLabel setHidden:YES];
@@ -43,8 +58,6 @@
     [self Add_Item: @"Tasty Ramen!" :@"Ramen" :image];
     image = [UIImage imageNamed:@"cupcake.jpg"];
     [self Add_Item: @"Fancy Cupcakes" :@"Cupcake" :image];
-    NSLog(@"breakpoint");
-    NSLog(@"%@", self.food);
     FoodInfo *item = [self swipeGenerator:self.food];
     [self.FoodImage setImage: item.Image];
     self.FoodName.text = item.FoodName;
@@ -53,6 +66,17 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
+
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    
+    CLLocation *location = [locations lastObject];
+    self.lat = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
+    self.lon = [NSString stringWithFormat:@"%f", location.coordinate.longitude];
+    NSLog(@"latitude is %@", self.lat);
+    NSLog(@"longitude is %@", self.lon);
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
