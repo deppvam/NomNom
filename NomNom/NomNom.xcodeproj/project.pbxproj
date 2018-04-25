@@ -19,10 +19,11 @@
 		9E76B661208A1C710010A34C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E76B660208A1C710010A34C /* main.m */; };
 		9E76B66B208A1C710010A34C /* NomNomTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E76B66A208A1C710010A34C /* NomNomTests.m */; };
 		9E76B676208A1C710010A34C /* NomNomUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E76B675208A1C710010A34C /* NomNomUITests.m */; };
-		9E76B688208A20510010A34C /* YelpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E76B686208A20510010A34C /* YelpRequest.m */; };
 		9E76B68C208A29BF0010A34C /* Ramen.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9E76B68B208A29BF0010A34C /* Ramen.jpeg */; };
 		9E76B68F208A38B60010A34C /* FoodInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E76B68E208A38B60010A34C /* FoodInfo.m */; };
 		9E76B694208A415E0010A34C /* cupcake.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9E76B693208A415D0010A34C /* cupcake.jpg */; };
+		9E9F3C1F209001F600DED402 /* YelpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9F3C1E209001F600DED402 /* YelpRequest.m */; };
+		9E9F3C28209024AA00DED402 /* LikeFoodTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9F3C27209024AA00DED402 /* LikeFoodTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,12 +66,14 @@
 		9E76B671208A1C710010A34C /* NomNomUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NomNomUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E76B675208A1C710010A34C /* NomNomUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NomNomUITests.m; sourceTree = "<group>"; };
 		9E76B677208A1C710010A34C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9E76B686208A20510010A34C /* YelpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpRequest.m; sourceTree = "<group>"; };
-		9E76B687208A20510010A34C /* YelpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpRequest.h; sourceTree = "<group>"; };
 		9E76B68B208A29BF0010A34C /* Ramen.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Ramen.jpeg; path = Assets.xcassets/Ramen.jpeg; sourceTree = "<group>"; };
 		9E76B68D208A38B60010A34C /* FoodInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoodInfo.h; sourceTree = "<group>"; };
 		9E76B68E208A38B60010A34C /* FoodInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodInfo.m; sourceTree = "<group>"; };
 		9E76B693208A415D0010A34C /* cupcake.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cupcake.jpg; path = Assets.xcassets/cupcake.jpg; sourceTree = "<group>"; };
+		9E9F3C1D209001F600DED402 /* YelpRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = YelpRequest.h; path = /Users/Joanna/Documents/NYU/Spring18/IOSProg/NomNom/NomNom/NomNom/YelpRequest.h; sourceTree = "<absolute>"; };
+		9E9F3C1E209001F600DED402 /* YelpRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = YelpRequest.m; path = /Users/Joanna/Documents/NYU/Spring18/IOSProg/NomNom/NomNom/NomNom/YelpRequest.m; sourceTree = "<absolute>"; };
+		9E9F3C26209024AA00DED402 /* LikeFoodTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LikeFoodTableViewController.h; sourceTree = "<group>"; };
+		9E9F3C27209024AA00DED402 /* LikeFoodTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LikeFoodTableViewController.m; sourceTree = "<group>"; };
 		D03A2B2743DD3998B42B9537 /* libPods-NomNomTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NomNomTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E00BBF178712DC91F6432F35 /* libPods-NomNomUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NomNomUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE7C4DAE81EB37E7E096166C /* Pods-NomNomUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NomNomUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NomNomUITests/Pods-NomNomUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -153,6 +156,8 @@
 		9E76B650208A1C6F0010A34C /* NomNom */ = {
 			isa = PBXGroup;
 			children = (
+				9E9F3C1D209001F600DED402 /* YelpRequest.h */,
+				9E9F3C1E209001F600DED402 /* YelpRequest.m */,
 				9E76B651208A1C6F0010A34C /* AppDelegate.h */,
 				9E76B652208A1C6F0010A34C /* AppDelegate.m */,
 				9E76B68D208A38B60010A34C /* FoodInfo.h */,
@@ -161,11 +166,11 @@
 				9E76B654208A1C6F0010A34C /* ViewController.h */,
 				9E76B655208A1C6F0010A34C /* ViewController.m */,
 				9E76B657208A1C6F0010A34C /* Main.storyboard */,
+				9E9F3C26209024AA00DED402 /* LikeFoodTableViewController.h */,
+				9E9F3C27209024AA00DED402 /* LikeFoodTableViewController.m */,
 				9E76B65A208A1C710010A34C /* Assets.xcassets */,
 				9E76B68B208A29BF0010A34C /* Ramen.jpeg */,
 				9E76B65C208A1C710010A34C /* LaunchScreen.storyboard */,
-				9E76B687208A20510010A34C /* YelpRequest.h */,
-				9E76B686208A20510010A34C /* YelpRequest.m */,
 				9E76B65F208A1C710010A34C /* Info.plist */,
 				9E44679D208A90CC00B11960 /* GoogleService-Info.plist */,
 				9E76B660208A1C710010A34C /* main.m */,
@@ -384,9 +389,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E9F3C28209024AA00DED402 /* LikeFoodTableViewController.m in Sources */,
 				9E76B656208A1C6F0010A34C /* ViewController.m in Sources */,
+				9E9F3C1F209001F600DED402 /* YelpRequest.m in Sources */,
 				9E76B68F208A38B60010A34C /* FoodInfo.m in Sources */,
-				9E76B688208A20510010A34C /* YelpRequest.m in Sources */,
 				9E76B661208A1C710010A34C /* main.m in Sources */,
 				9E76B653208A1C6F0010A34C /* AppDelegate.m in Sources */,
 			);

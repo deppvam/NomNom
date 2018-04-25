@@ -51,18 +51,17 @@
     //Set up our URL request
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"GET"];
-    NSString *url = [NSString stringWithFormat:@"https://api.yelp.com/v3/businesses/search?location=%@,%@&radius=$d&limit=%d&offset=%d",latitude,longitude,rad,lim]; //change this to change the site we're pinging
+    NSString *url = [NSString stringWithFormat:@"https://api.yelp.com/v3/businesses/search?latitude=%@&longitude=%@&radius=%d&limit=%d&offset=%d",latitude,longitude,rad,lim,off]; //change this to change the site we're pinging
     NSString *header = [NSString stringWithFormat:@"Bearer %@",api_key];
     [request setURL:[NSURL URLWithString:url]];
     [request setValue:header forHTTPHeaderField:@"Authorization"];
     
     NSURLResponse * response = nil;
     NSError * error = nil;
-    
+
     //Make the request and save the JSON data we get
     NSData * data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error]; // Yes, this is deprecated. But it works for now as i try to get something workable
-    
-    
+
     NSDictionary *responseObj = [NSJSONSerialization
                                  JSONObjectWithData:data
                                  options:0
@@ -70,7 +69,8 @@
     
     
     NSArray *businesses = [responseObj objectForKey:@"businesses"]; //extract the businsses array from the JSON dictionary
-    
+    //NSLog([responseObj description]);
+
     NSMutableDictionary *newDict = [[NSMutableDictionary alloc] init]; //initialize the dictionary
     for(id obj in businesses){
         if(newDict[[obj objectForKey:@"id"]]==nil)

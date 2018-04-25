@@ -10,61 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NomNom/ViewController.m"
-            timestampString = "546289684.731806"
+            timestampString = "546319758.379573"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
             landmarkName = "-rightSwipeAction:"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NomNom/ViewController.m"
-            timestampString = "546289684.732439"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "food"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[ViewController food]"
-                  moduleName = "NomNom"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Joanna/Documents/NYU/Spring18/IOSProg/NomNom/NomNom/NomNom/ViewController.m"
-                  timestampString = "546288266.6440181"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "12">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[ViewController setFood:]"
-                  moduleName = "NomNom"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Joanna/Documents/NYU/Spring18/IOSProg/NomNom/NomNom/NomNom/ViewController.m"
-                  timestampString = "546288266.647806"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "49">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
