@@ -96,14 +96,19 @@
 
 - (IBAction)leftSwipeAction:(id)sender {
     
+    [self dislikeAct];
+    
+    
+    
+    
+}
+
+-(void) dislikeAct {
     self.item = [self swipeGenerator:self.requests];
     while ([[self.item objectForKey: @"is_closed"] boolValue] == YES) {
         self.item = [self swipeGenerator:self.requests];
     }
     [self setAll:self.item];
-    
-    
-    
     
 }
 
@@ -125,6 +130,14 @@
 }
  
 - (IBAction)rightSwipeAction:(id)sender {
+    [self likeAct];
+    
+    //The event handling method
+     
+ 
+}
+
+- (void)likeAct {
     [self.likedFood addObject:self.item];
     [self.FoodName setHidden:YES];
     [self.FoodImage setHidden:YES];
@@ -143,9 +156,6 @@
                                             action:@selector(handleSingleTap:)];
     [self.LikeViewContainer addGestureRecognizer:singleFingerTap];
     
-    //The event handling method
-     
- 
 }
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer
@@ -199,12 +209,15 @@
     }
 }
 
-/*
-- (void) Add_Item: (NSString*) Name : (NSString*) s : (UIImage*) image{
-    id myObject = [[FoodInfo alloc] init];
-    [myObject set_Obj:s : Name : image];
-    [self.food setObject:myObject forKey:Name];
+- (IBAction)clickLike:(id)sender {
+    [self likeAct];
 }
- */
+
+- (IBAction)clickDislike:(id)sender {
+    [self dislikeAct];
+}
+
+
+
 
 @end

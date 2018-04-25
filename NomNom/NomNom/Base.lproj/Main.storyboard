@@ -51,11 +51,17 @@
                                 <rect key="frame" x="36" y="537" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Like"/>
+                                <connections>
+                                    <action selector="clickLike:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LoL-bv-eQc"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PAd-fO-ccM">
                                 <rect key="frame" x="279" y="537" width="45" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Dislike"/>
+                                <connections>
+                                    <action selector="clickDislike:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Km9-ph-v9I"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T8K-ep-f6t">
                                 <rect key="frame" x="171" y="537" width="32" height="30"/>
@@ -123,6 +129,7 @@
         <!--Like Food Table View Controller-->
         <scene sceneID="BNk-mA-fkf">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rDz-29-l7Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="91w-jD-0wC" customClass="LikeFoodTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Sk7-RX-vO5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -153,7 +160,6 @@
                         </connections>
                     </tableView>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rDz-29-l7Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="822" y="134"/>
         </scene>
