@@ -2,12 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/Joanna/Documents/NYU/Spring18/IOSProg/NomNom/NomNom/NomNom/YelpRequest.h">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/Joanna/Documents/NYU/Spring18/IOSProg/NomNom/NomNom/NomNom/YelpRequest.m">
-   </FileRef>
-   <FileRef
       location = "group:NomNom.xcodeproj">
    </FileRef>
    <FileRef
