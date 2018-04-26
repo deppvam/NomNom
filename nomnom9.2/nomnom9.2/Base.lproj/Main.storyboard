@@ -308,10 +308,11 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.7798001766204834" green="0.22844435274600983" blue="0.21154443919658661" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Haven't quite put in the restaurant info yet" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="IAf-hk-c3a">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="IAf-hk-c3a">
                                 <rect key="frame" x="67" y="451" width="240" height="196"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Haven't quite put in the restaurant info yet What should I put here? I was thinking: Price Range, Addrss, Phone Number, Rough distance, food categories, transactions (delivery, reservation, etc_</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>

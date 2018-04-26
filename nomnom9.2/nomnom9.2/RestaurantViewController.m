@@ -27,6 +27,7 @@
     
     //Restaurant Name
     self.restoName.text = [self.resto objectForKey:@"name"];
+    self.restoName.textColor = [UIColor whiteColor];
     //Rating
     //Begin Appending Yelp Branding... for ratings
     NSMutableAttributedString *description = [[NSMutableAttributedString alloc] init];
