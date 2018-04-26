@@ -9,5 +9,10 @@
 #import "ViewController.h"
 
 @interface RestaurantViewController : ViewController
-
+@property (strong,nonatomic) NSMutableDictionary* resto;
+@property (weak, nonatomic) IBOutlet UIImageView *image_url;
+@property (weak, nonatomic) IBOutlet UITextView *detail_object;
+@property (weak, nonatomic) IBOutlet UILabel *restoName;
+@property (weak, nonatomic) IBOutlet UITextView *rating;
+@property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
 @end

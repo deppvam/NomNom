@@ -7,7 +7,7 @@
 //
 
 #import "ListViewController.h"
-
+#import "RestaurantViewController.h"
 @interface ListViewController ()
 
 @end
@@ -68,7 +68,6 @@
     
     
     
-    
     NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [[self.liked  objectAtIndex:(int)indexPath.row] objectForKey:@"image_url"]]];
     cell.image = [UIImage imageWithData: imageData];
     
@@ -77,5 +76,20 @@
 }
 -(IBAction)prepareForUnwind:(UIStoryboardSegue *)segue {
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"cellToRestaurantSegue"]) {
+        RestaurantViewController *destViewController = segue.destinationViewController;
+        UITableViewCell *cell = sender;
+        UITableView* table = (UITableView *)[cell superview];
+        NSIndexPath* indexPath = [table indexPathForCell:cell];
+        NSLog([NSString stringWithFormat:@"index: %d",indexPath.row]);
+        NSLog([NSString stringWithFormat:@"%@",[[self.liked objectAtIndex: (int)indexPath.row] description]]);
+        destViewController.resto = [self.liked objectAtIndex: (int)indexPath.row];
+        NSLog(@"moving to Single Resto view");
+    }
+}
+
+
 
 @end

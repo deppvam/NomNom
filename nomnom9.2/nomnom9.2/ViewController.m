@@ -117,9 +117,10 @@
     [self.FoodImage setImage: [UIImage imageWithData: imageData]];
     NSArray *typeFood = [business objectForKey:@"categories"];
     self.FoodName.text = [typeFood[0] objectForKey:@"title"];
-    
+    NSMutableAttributedString *description = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Restaurant: \t\t%@",[business objectForKey:@"name"]]];
     //Begin Appending Yelp Branding... for ratings
-    NSMutableAttributedString *description = [[NSMutableAttributedString alloc] initWithString:@"Yelp Rating: \t\t"];
+    [description appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\nYelp Rating: \t\t"]];
+    //NSMutableAttributedString *description = [[NSMutableAttributedString alloc] initWithString:@"\nYelp Rating: \t\t"];
     
     NSString *rating =[business objectForKey:@"rating"];
     
@@ -144,6 +145,8 @@
     [description appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"\nDistance:\t\t\t%@ miles",distance]]];
     //[description appendFormat:@"Distance: %@ miles\n", distance];
     self.DescriptionBox.attributedText = description;
+    self.DescriptionBox.textColor = [UIColor whiteColor];
+
 }
 
 - (IBAction)rightSwipeAction:(id)sender {
