@@ -12,9 +12,7 @@
 #import "YelpRequest.h"
 #import "LikeFoodTableViewController.h"
 
-@interface ViewController : UIViewController {
-    int offset;
-}
+@interface ViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIView *LikeViewContainer;
 @property (weak, nonatomic) IBOutlet UILabel *LikedLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *LikedImage;
