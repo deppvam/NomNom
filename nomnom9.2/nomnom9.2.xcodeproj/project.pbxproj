@@ -24,6 +24,9 @@
 		5E3A1F5D20913C770081C6C7 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A1F5C20913C770081C6C7 /* SettingViewController.m */; };
 		5E3A1F6020913C7D0081C6C7 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A1F5F20913C7D0081C6C7 /* AccountViewController.m */; };
 		5E3A1F62209152260081C6C7 /* LikeFoodTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A1F61209152260081C6C7 /* LikeFoodTableViewController.m */; };
+		70EE3966A2A5921514979E42 /* libPods-nomnom9.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC3F941E7159044618123827 /* libPods-nomnom9.2.a */; };
+		96033362E48E112D7F6A83E0 /* libPods-nomnom9.2Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 004016CAD2AFE31ABAF39D61 /* libPods-nomnom9.2Tests.a */; };
+		D87AE7BFE8E9BB7A02FD4C75 /* libPods-nomnom9.2UITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29D77602964E5E7B083FDF14 /* libPods-nomnom9.2UITests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		004016CAD2AFE31ABAF39D61 /* libPods-nomnom9.2Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-nomnom9.2Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		00B637384559C2C89513E453 /* Pods-nomnom9.2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nomnom9.2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-nomnom9.2/Pods-nomnom9.2.debug.xcconfig"; sourceTree = "<group>"; };
+		0A2F8C0299DA0BD0B3196386 /* Pods-nomnom9.2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nomnom9.2Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-nomnom9.2Tests/Pods-nomnom9.2Tests.release.xcconfig"; sourceTree = "<group>"; };
+		29D77602964E5E7B083FDF14 /* libPods-nomnom9.2UITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-nomnom9.2UITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E3A1F0420911C840081C6C7 /* nomnom9.2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nomnom9.2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E3A1F0720911C840081C6C7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5E3A1F0820911C840081C6C7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -77,6 +84,11 @@
 		5E3A1F5E20913C7D0081C6C7 /* AccountViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
 		5E3A1F5F20913C7D0081C6C7 /* AccountViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
 		5E3A1F61209152260081C6C7 /* LikeFoodTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeFoodTableViewController.m; sourceTree = "<group>"; };
+		60D3E58166C715B005964CCA /* Pods-nomnom9.2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nomnom9.2UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-nomnom9.2UITests/Pods-nomnom9.2UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		6D06CB847AF716A2D3369CC8 /* Pods-nomnom9.2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nomnom9.2.release.xcconfig"; path = "Pods/Target Support Files/Pods-nomnom9.2/Pods-nomnom9.2.release.xcconfig"; sourceTree = "<group>"; };
+		B2E62C7B78B481E181407C58 /* Pods-nomnom9.2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nomnom9.2Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-nomnom9.2Tests/Pods-nomnom9.2Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		CC3F941E7159044618123827 /* libPods-nomnom9.2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-nomnom9.2.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9F337A8372AE3E077C5F254 /* Pods-nomnom9.2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nomnom9.2UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-nomnom9.2UITests/Pods-nomnom9.2UITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70EE3966A2A5921514979E42 /* libPods-nomnom9.2.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96033362E48E112D7F6A83E0 /* libPods-nomnom9.2Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,12 +112,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D87AE7BFE8E9BB7A02FD4C75 /* libPods-nomnom9.2UITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2647C2DBC7C3F8545B62D0E0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CC3F941E7159044618123827 /* libPods-nomnom9.2.a */,
+				004016CAD2AFE31ABAF39D61 /* libPods-nomnom9.2Tests.a */,
+				29D77602964E5E7B083FDF14 /* libPods-nomnom9.2UITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3B75259D4152B70FD9917253 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				00B637384559C2C89513E453 /* Pods-nomnom9.2.debug.xcconfig */,
+				6D06CB847AF716A2D3369CC8 /* Pods-nomnom9.2.release.xcconfig */,
+				B2E62C7B78B481E181407C58 /* Pods-nomnom9.2Tests.debug.xcconfig */,
+				0A2F8C0299DA0BD0B3196386 /* Pods-nomnom9.2Tests.release.xcconfig */,
+				60D3E58166C715B005964CCA /* Pods-nomnom9.2UITests.debug.xcconfig */,
+				F9F337A8372AE3E077C5F254 /* Pods-nomnom9.2UITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		5E3A1EFB20911C840081C6C7 = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +149,8 @@
 				5E3A1F1F20911C840081C6C7 /* nomnom9.2Tests */,
 				5E3A1F2A20911C840081C6C7 /* nomnom9.2UITests */,
 				5E3A1F0520911C840081C6C7 /* Products */,
+				3B75259D4152B70FD9917253 /* Pods */,
+				2647C2DBC7C3F8545B62D0E0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -182,6 +222,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5E3A1F3020911C840081C6C7 /* Build configuration list for PBXNativeTarget "nomnom9.2" */;
 			buildPhases = (
+				4E0CEB74372AD4A041D917D7 /* [CP] Check Pods Manifest.lock */,
 				5E3A1F0020911C840081C6C7 /* Sources */,
 				5E3A1F0120911C840081C6C7 /* Frameworks */,
 				5E3A1F0220911C840081C6C7 /* Resources */,
@@ -199,6 +240,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5E3A1F3320911C840081C6C7 /* Build configuration list for PBXNativeTarget "nomnom9.2Tests" */;
 			buildPhases = (
+				804B6D73DE911F15C72B9484 /* [CP] Check Pods Manifest.lock */,
 				5E3A1F1820911C840081C6C7 /* Sources */,
 				5E3A1F1920911C840081C6C7 /* Frameworks */,
 				5E3A1F1A20911C840081C6C7 /* Resources */,
@@ -217,6 +259,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5E3A1F3620911C840081C6C7 /* Build configuration list for PBXNativeTarget "nomnom9.2UITests" */;
 			buildPhases = (
+				A8515B204FAE18C152B96763 /* [CP] Check Pods Manifest.lock */,
 				5E3A1F2320911C840081C6C7 /* Sources */,
 				5E3A1F2420911C840081C6C7 /* Frameworks */,
 				5E3A1F2520911C840081C6C7 /* Resources */,
@@ -303,6 +346,63 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4E0CEB74372AD4A041D917D7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-nomnom9.2-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		804B6D73DE911F15C72B9484 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-nomnom9.2Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A8515B204FAE18C152B96763 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-nomnom9.2UITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5E3A1F0020911C840081C6C7 /* Sources */ = {
@@ -480,6 +580,7 @@
 		};
 		5E3A1F3120911C840081C6C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00B637384559C2C89513E453 /* Pods-nomnom9.2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -493,6 +594,7 @@
 		};
 		5E3A1F3220911C840081C6C7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D06CB847AF716A2D3369CC8 /* Pods-nomnom9.2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -506,6 +608,7 @@
 		};
 		5E3A1F3420911C840081C6C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B2E62C7B78B481E181407C58 /* Pods-nomnom9.2Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -520,6 +623,7 @@
 		};
 		5E3A1F3520911C840081C6C7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A2F8C0299DA0BD0B3196386 /* Pods-nomnom9.2Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -534,6 +638,7 @@
 		};
 		5E3A1F3720911C840081C6C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 60D3E58166C715B005964CCA /* Pods-nomnom9.2UITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = nomnom9.2UITests/Info.plist;
@@ -547,6 +652,7 @@
 		};
 		5E3A1F3820911C840081C6C7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F9F337A8372AE3E077C5F254 /* Pods-nomnom9.2UITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = nomnom9.2UITests/Info.plist;
