@@ -44,8 +44,8 @@
     NSAttributedString *attachmentString = [NSAttributedString attributedStringWithAttachment:imageAttachment];
     [description appendAttributedString:attachmentString];
     [description appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"\nBased on %@ reviews",[self.resto objectForKey:@"review_count"]]]];
-    rating.attributedText=description;
-    rating.textColor = [UIColor whiteColor];
+    self.rating.attributedText=description;
+    self.rating.textColor = [UIColor whiteColor];
     //End Yelp Branding
     
     
@@ -67,11 +67,11 @@
     NSDictionary *location = [self.resto objectForKey:@"location"];
     
     [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"address1"]]];
-    if([[location objectForKey:@"address2"] length] != 0 ){
+    if([location objectForKey:@"address2"]!=nil && [[location objectForKey:@"address2"] length] != 0 ){
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n\t\t"]];
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"address2"]]];
     }
-    if([[location objectForKey:@"address3"] length] != 0 ){
+    if([location objectForKey:@"address3"]!=nil && [[location objectForKey:@"address3"] length] != 0 ){
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n\t\t"]];
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"address3"]]];
     }
@@ -84,7 +84,7 @@
     [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@","]];
     [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"country"]]];
 
-    if([[location objectForKey:@"cross_streets"] length] != 0 ){
+    if([location objectForKey:@"cross_streets"]!=nil && [[location objectForKey:@"cross_streets"] length] != 0 ){
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\nCross Streets:\t\t"]];
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"cross_streets"]]];
     }
@@ -113,7 +113,7 @@
             [transction appendString:@","];
         }
     }
-    if([transction length] != 0)
+    if([transction length]!=nil && [transction length] != 0)
     {
         transction = [[NSMutableString alloc] initWithString:[@"Categories" stringByAppendingString:transction]];
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n\nAccepts:\t\t"]];
@@ -121,6 +121,8 @@
     }
     //Transactions ^
     
+    self.detail_object.attributedText=details;
+    self.detail_object.textColor = [UIColor whiteColor];
 }
 
 - (void)didReceiveMemoryWarning {
