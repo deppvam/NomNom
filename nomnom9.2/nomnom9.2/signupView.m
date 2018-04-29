@@ -63,7 +63,23 @@
                                          [self presentViewController:alert animated:YES completion:nil];
                                      }
                                      else {
-                                         
+                                         if(error.code == FIRAuthErrorCodeInvalidEmail) {
+                                             self.errorMsg.text = @"Invalid email format, please enter an email";
+                                             [self.errorMsg sizeToFit];
+                                             [self.errorMsg setHidden:NO];
+                                         }
+                                         else if (error.code == FIRAuthErrorCodeEmailAlreadyInUse) {
+                                             self.errorMsg.text = @"This email is already registered\nPlease log in";
+                                             self.errorMsg.lineBreakMode = NSLineBreakByWordWrapping;
+                                             self.errorMsg.numberOfLines = 2;
+                                             [self.errorMsg sizeToFit];
+                                             [self.errorMsg setHidden:NO];
+                                         }
+                                         else if (error.code == FIRAuthErrorCodeWeakPassword) {
+                                             self.errorMsg.text = @"This password is too weak";
+                                             [self.errorMsg sizeToFit];
+                                             [self.errorMsg setHidden:NO];
+                                         }
                                      }
                                  }];
     }
