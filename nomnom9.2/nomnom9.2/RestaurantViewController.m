@@ -122,13 +122,10 @@
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:transction]];
     }
     //Transactions ^
-<<<<<<< HEAD
     self.detail_object.text = [details string];
-=======
     
     self.detail_object.attributedText=details;
     self.detail_object.textColor = [UIColor whiteColor];
->>>>>>> 2cdb0e61333094068c40f0b499db54243a3afbe1
 }
 
 - (void)didReceiveMemoryWarning {
