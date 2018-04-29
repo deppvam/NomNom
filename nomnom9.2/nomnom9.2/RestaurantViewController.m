@@ -34,7 +34,7 @@
     [description appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@""]];
     //NSMutableAttributedString *description = [[NSMutableAttributedString alloc] initWithString:@"\nYelp Rating: \t\t"];
     
-    NSString *ratings =[resto objectForKey:@"rating"];
+    NSString *ratings =[self.resto objectForKey:@"rating"];
     
     NSTextAttachment *imageAttachment = [[NSTextAttachment alloc] init];
     imageAttachment.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",ratings]];
@@ -53,6 +53,74 @@
     NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [self.resto objectForKey:@"image_url"]]];
     NSLog([[self.resto objectForKey:@"image_url"] description]);
     [self.image_url setImage:[UIImage imageWithData: imageData]];
+    
+    //set detail box : detail_object
+    NSMutableAttributedString *details = [[NSMutableAttributedString alloc] initWithString:@"Price:\t\t"];
+    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[self.resto objectForKey:@"price"]]];
+
+    //Price above ^
+    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n\nPhone:\t\t"]];
+    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[self.resto objectForKey:@"display_phone"]]];
+    //Phone Number above^
+    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n\nAddress:\t\t"]];
+    
+    NSDictionary *location = [self.resto objectForKey:@"location"];
+    
+    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"address1"]]];
+    if([[location objectForKey:@"address2"] length] != 0 ){
+        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n\t\t"]];
+        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"address2"]]];
+    }
+    if([[location objectForKey:@"address3"] length] != 0 ){
+        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n\t\t"]];
+        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"address3"]]];
+    }
+    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n\t\t"]];
+    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"city"]]];
+    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@","]];
+    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"state"]]];
+    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@","]];
+    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"zip_code"]]];
+    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@","]];
+    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"country"]]];
+
+    if([[location objectForKey:@"cross_streets"] length] != 0 ){
+        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\nCross Streets:\t\t"]];
+        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"cross_streets"]]];
+    }
+    //Address above^
+    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n\nCategories:\t\t"]];
+    for(id object in [self.resto objectForKey:@"categories"]){
+        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[object objectForKey:@"title"]]];
+        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@","]];
+    }
+    //Categories above ^
+    NSMutableString * transction = [[NSMutableString alloc] init];
+    for(id object in [self.resto objectForKey:@"transactions"]){
+        if( [object isEqualToString:@"pickup"])
+        {
+            [transction appendString:@"Order Pickup"];
+            [transction appendString:@","];
+        }
+        if( [object isEqualToString:@"delivery"])
+        {
+            [transction appendString:@"Order Delivery"];
+            [transction appendString:@","];
+        }
+        if( [object isEqualToString:@"restaurant_reservation"])
+        {
+            [transction appendString:@"Reservations"];
+            [transction appendString:@","];
+        }
+    }
+    if([transction length] != 0)
+    {
+        transction = [[NSMutableString alloc] initWithString:[@"Categories" stringByAppendingString:transction]];
+        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n\nAccepts:\t\t"]];
+        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:transction]];
+    }
+    //Transactions ^
+    
 }
 
 - (void)didReceiveMemoryWarning {
