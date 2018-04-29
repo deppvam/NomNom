@@ -38,10 +38,12 @@
 @synthesize lat;
 @synthesize requests;
 @synthesize item;
+@synthesize offset;
 
 - (void)viewDidLoad {
     
     if ([CLLocationManager locationServicesEnabled]) {
+        self.offset = 0;
         self.locationManager = [[CLLocationManager alloc] init];
         self.locationManager.delegate = self;
         [self.locationManager requestWhenInUseAuthorization];
@@ -74,14 +76,16 @@
     self.lat = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
     self.lon = [NSString stringWithFormat:@"%f", location.coordinate.longitude];
     [self initiate_request];
+    [self.locationManager stopUpdatingLocation];
     
 }
 
 - (void) initiate_request {
-    self.requests = [[YelpRequest makeYelpRequest:self.lat long:self.lon radius:3000 limit:50 offset:0] mutableCopy];
+
+    self.requests = [[YelpRequest makeYelpRequest:self.lat long:self.lon radius:3000 limit:50 offset:self.offset] mutableCopy];
     self.item = [self swipeGenerator:self.requests];
     
-    while ([[self.item objectForKey: @"is_closed"] boolValue] == YES) {
+    while ([[self.item objectForKey: @"is_closed"] boolValue] == YES || [[self.item objectForKey:@"price"] isEqualToString: @"(null)"]) {
         self.item = [self swipeGenerator:self.requests];
     }
     [self setAll:self.item];
@@ -104,8 +108,9 @@
 }
 
 -(void) dislikeAct {
+
     self.item = [self swipeGenerator:self.requests];
-    while ([[self.item objectForKey: @"is_closed"] boolValue] == YES) {
+    while ([[self.item objectForKey: @"is_closed"] boolValue] == YES || [[self.item objectForKey:@"price"] isEqual: @"(null)"]) {
         self.item = [self swipeGenerator:self.requests];
     }
     [self setAll:self.item];
@@ -180,13 +185,11 @@
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer
 {
-    
-    CGPoint location = [recognizer locationInView:[recognizer.view superview]];
     [self.LikeViewContainer setHidden:YES];
     [self.LikedLabel setHidden:YES];
     [self.LikedImage setHidden:YES];
     self.item = [self swipeGenerator:self.requests];
-    while ([[self.item objectForKey: @"is_closed"] boolValue] == YES) {
+    while ([[self.item objectForKey: @"is_closed"] boolValue] == YES || [[self.item objectForKey:@"price"] isEqualToString: @"(null)"]) {
         self.item = [self swipeGenerator:self.requests];
     }
     [self setAll:self.item];
@@ -202,19 +205,30 @@
     NSArray* keys = [allRequests allKeys];
     int size = [keys count];
     NSLog(@"size is: %i", size);
+    if (size == 0) {
+        self.DescriptionBox.text = @"Loading Yums";
+        UIImage *image = [UIImage imageNamed:@"icon"];
+        [self.FoodImage setImage: image];
+        [self.FoodImage setHidden:NO];
+        [self.FoodName setHidden:NO];
+        [self.DescriptionBox setHidden:NO];
+        self.offset +=50;
+        [self.locationManager startUpdatingLocation];
+        [self.locationManager stopUpdatingLocation];
+        return nil;
+        
+    }
     int index = (int) arc4random_uniform(size-1);
     id key = keys[index];
     id item = [allRequests objectForKey:key];
-    int count = 0;
-    while (item == nil && count != size) {
+    NSLog(@"price is: %@", [self.item objectForKey:@"price"]);
+    
+    while (item == nil && size!=0) {
         index = (int) arc4random() % (size);
         key = keys[index];
         item = [allRequests objectForKey:key];
-        count++;
     }
-    if (count == size) {
-        return nil;
-    }
+    
     [allRequests removeObjectForKey:key];
     
     return item;
