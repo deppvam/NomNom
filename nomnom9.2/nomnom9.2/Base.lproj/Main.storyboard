@@ -393,6 +393,13 @@
                                         <rect key="frame" x="123" y="0.0" width="103" height="84"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iiZ-UE-7Iy">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="84"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="sentToYelp:" destination="Hfv-gO-Rzc" eventType="touchUpInside" id="dnc-vD-Rig"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.7798001766204834" green="0.22844435274600983" blue="0.21154443919658661" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>

@@ -12,6 +12,7 @@
 @property (strong,nonatomic) NSMutableDictionary* resto;
 @property (weak, nonatomic) IBOutlet UIImageView *image_url;
 @property (weak, nonatomic) IBOutlet UITextView *detail_object;
+- (IBAction)sentToYelp:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *restoName;
 @property (weak, nonatomic) IBOutlet UITextView *rating;
 @property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
