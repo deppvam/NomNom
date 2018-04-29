@@ -44,8 +44,8 @@
     NSAttributedString *attachmentString = [NSAttributedString attributedStringWithAttachment:imageAttachment];
     [description appendAttributedString:attachmentString];
     [description appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"\nBased on %@ reviews",[self.resto objectForKey:@"review_count"]]]];
-    rating.attributedText=description;
-    rating.textColor = [UIColor whiteColor];
+    self.rating.attributedText=description;
+    self.rating.textColor = [UIColor whiteColor];
     //End Yelp Branding
     
     
@@ -55,46 +55,50 @@
     [self.image_url setImage:[UIImage imageWithData: imageData]];
     
     //set detail box : detail_object
-    NSMutableAttributedString *details = [[NSMutableAttributedString alloc] initWithString:@"Price:\t\t"];
+    NSMutableAttributedString *details = [[NSMutableAttributedString alloc] init];
+    
     [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[self.resto objectForKey:@"price"]]];
-
+    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@" · "]];
     //Price above ^
-    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n\nPhone:\t\t"]];
-    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[self.resto objectForKey:@"display_phone"]]];
-    //Phone Number above^
-    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n\nAddress:\t\t"]];
-    
-    NSDictionary *location = [self.resto objectForKey:@"location"];
-    
-    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"address1"]]];
-    if([[location objectForKey:@"address2"] length] != 0 ){
-        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n\t\t"]];
-        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"address2"]]];
-    }
-    if([[location objectForKey:@"address3"] length] != 0 ){
-        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n\t\t"]];
-        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"address3"]]];
-    }
-    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n\t\t"]];
-    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"city"]]];
-    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@","]];
-    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"state"]]];
-    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@","]];
-    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"zip_code"]]];
-    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@","]];
-    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"country"]]];
-
-    if([[location objectForKey:@"cross_streets"] length] != 0 ){
-        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\nCross Streets:\t\t"]];
-        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"cross_streets"]]];
-    }
-    //Address above^
-    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n\nCategories:\t\t"]];
     for(id object in [self.resto objectForKey:@"categories"]){
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[object objectForKey:@"title"]]];
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@","]];
     }
     //Categories above ^
+    // address image here [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n\nAddress:\t\t"]];
+    
+    NSDictionary *location = [self.resto objectForKey:@"location"];
+    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n"]];
+    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"address1"]]];
+    if([location objectForKey:@"address2"]!=nil && [[location objectForKey:@"address2"] length] != 0 ){
+        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n"]];
+        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"address2"]]];
+    }
+    if([location objectForKey:@"address3"]!=nil && [[location objectForKey:@"address3"] length] != 0 ){
+        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n"]];
+        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"address3"]]];
+    }
+    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n"]];
+    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"city"]]];
+    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@","]];
+    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"state"]]];
+    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@","]];
+    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"zip_code"]]];
+    //[details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@","]];
+    //[details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"country"]]];
+    
+    if([location objectForKey:@"cross_streets"]!=nil && [[location objectForKey:@"cross_streets"] length] != 0 ){
+        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n b/t "]];
+        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"cross_streets"]]];
+    }
+    //Address above^
+    
+    
+    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n\nPhone:\t\t"]];
+    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[self.resto objectForKey:@"display_phone"]]];
+    //Phone Number above^
+    
+    
     NSMutableString * transction = [[NSMutableString alloc] init];
     for(id object in [self.resto objectForKey:@"transactions"]){
         if( [object isEqualToString:@"pickup"])
@@ -113,14 +117,20 @@
             [transction appendString:@","];
         }
     }
-    if([transction length] != 0)
+    if([transction length]!=nil && [transction length] != 0)
     {
         transction = [[NSMutableString alloc] initWithString:[@"Categories" stringByAppendingString:transction]];
-        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n\nAccepts:\t\t"]];
+        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\nAccepts:"]];
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:transction]];
     }
     //Transactions ^
+<<<<<<< HEAD
     self.detail_object.text = [details string];
+=======
+    
+    self.detail_object.attributedText=details;
+    self.detail_object.textColor = [UIColor whiteColor];
+>>>>>>> 2cdb0e61333094068c40f0b499db54243a3afbe1
 }
 
 - (void)didReceiveMemoryWarning {
@@ -139,4 +149,9 @@
 }
 */
 
+- (IBAction)sentToYelp:(id)sender {
+    NSURL *url = [ [ NSURL alloc ] initWithString: [self.resto objectForKey:@"url"] ];
+    
+    [[UIApplication sharedApplication] openURL:url];
+}
 @end
