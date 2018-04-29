@@ -120,7 +120,7 @@
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:transction]];
     }
     //Transactions ^
-    
+    self.detail_object.text = [details string];
 }
 
 - (void)didReceiveMemoryWarning {
