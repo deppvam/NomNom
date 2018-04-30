@@ -81,10 +81,8 @@
 }
 
 - (void) initiate_request {
-    int radi = [[NSUserDefaults standardUserDefaults] integerForKey:@"distance"];
-    int minP = [[NSUserDefaults standardUserDefaults] integerForKey:@"minPrice"];
-    int maxP = [[NSUserDefaults standardUserDefaults] integerForKey:@"maxPrice"];
-    self.requests = [[YelpRequest makeYelpRequest:self.lat long:self.lon radius:radi limit:50 offset:self.offset min:minP max:maxP] mutableCopy];
+
+    self.requests = [[YelpRequest makeYelpRequest:self.lat long:self.lon radius:3000 limit:50 offset:self.offset] mutableCopy];
     self.item = [self swipeGenerator:self.requests];
     
     while ([[self.item objectForKey: @"is_closed"] boolValue] == YES || [[self.item objectForKey:@"price"] isEqualToString: @"(null)"]) {

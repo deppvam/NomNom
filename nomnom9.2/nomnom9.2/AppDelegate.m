@@ -19,23 +19,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [FIRApp configure];
-    
-    // initialize defaults
-    
-    //NSString
-    NSString *dateKey =    @"dateKey";
-    NSDate *lastRead = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:dateKey];
-    if (lastRead == nil) //App first run: set up user defaults
-    {
-        NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:[NSDate date], dateKey, nil];
-        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"minPrice"];
-        [[NSUserDefaults standardUserDefaults] setInteger:5 forKey:@"maxPrice"];
-        [[NSUserDefaults standardUserDefaults] setInteger:5000 forKey:@"distance"]; //5km standard
-        
-        [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:dateKey];
     // Override point for customization after application launch.
     return YES;
 }
