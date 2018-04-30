@@ -13,9 +13,17 @@
 @end
 
 @implementation FilterViewController
-
+@synthesize typeText;
+@synthesize TypeEnable;
+@synthesize oneDollar;
+@synthesize twoDollar;
+@synthesize threeDollar;
+@synthesize fourDollar;
+@synthesize distance;
+@synthesize filters;
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.filters = [[NSDictionary alloc] init];
     // Do any additional setup after loading the view.
 }
 
@@ -23,6 +31,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)switchAction:(id)sender {
+}
+
 
 /*
 #pragma mark - Navigation

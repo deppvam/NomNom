@@ -15,5 +15,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *twoDollar;
 @property (weak, nonatomic) IBOutlet UIButton *threeDollar;
 @property (weak, nonatomic) IBOutlet UIButton *fourDollar;
+@property (weak, nonatomic) IBOutlet UISlider *distance;
+@property (weak, nonatomic) IBOutlet UIButton *applyFilter;
+@property (weak, nonatomic) NSDictionary *filters;
 
 @end

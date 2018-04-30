@@ -45,7 +45,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="BlG-zV-qf5">
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="0.5" maxValue="25" translatesAutoresizingMaskIntoConstraints="NO" id="BlG-zV-qf5">
                                 <rect key="frame" x="22" y="414" width="327" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </slider>
@@ -95,10 +95,16 @@
                                 <rect key="frame" x="145" y="500" width="85" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Apply Filters"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="ApplyFilter" id="cm1-2T-bni"/>
+                                </connections>
                             </button>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yec-tQ-HBS">
                                 <rect key="frame" x="312" y="189" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="switchAction:" destination="mnc-UK-mx1" eventType="valueChanged" id="vvV-n3-2UC"/>
+                                </connections>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heN-yD-oN4">
                                 <rect key="frame" x="210" y="300" width="30" height="30"/>
@@ -134,6 +140,8 @@
                     </view>
                     <connections>
                         <outlet property="TypeEnable" destination="yec-tQ-HBS" id="cTy-DA-zVh"/>
+                        <outlet property="applyFilter" destination="TYZ-ym-4aw" id="T33-7z-a7d"/>
+                        <outlet property="distance" destination="BlG-zV-qf5" id="A22-8o-TZ7"/>
                         <outlet property="fourDollar" destination="S0U-eN-Rbe" id="SSO-wv-EhE"/>
                         <outlet property="oneDollar" destination="heN-yD-oN4" id="PVr-MC-H5S"/>
                         <outlet property="threeDollar" destination="4Tu-vz-qBS" id="6E1-B2-upp"/>
@@ -755,6 +763,6 @@
         <segue reference="g6z-7N-JFQ"/>
         <segue reference="fU2-EL-sGB"/>
         <segue reference="kCz-rb-ELu"/>
-        <segue reference="Sko-j3-yIX"/>
+        <segue reference="cm1-2T-bni"/>
     </inferredMetricsTieBreakers>
 </document>
