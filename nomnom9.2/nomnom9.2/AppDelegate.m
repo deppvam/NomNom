@@ -19,6 +19,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [FIRApp configure];
+    
+    FIRFirestore *defaultFirestore = [FIRFirestore firestore];
     // Override point for customization after application launch.
     return YES;
 }

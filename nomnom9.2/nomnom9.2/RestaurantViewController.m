@@ -24,13 +24,25 @@
 @synthesize saveBtn;
 @synthesize segueIden;
 @synthesize liked;
+@synthesize saved;
+@synthesize db;
+@synthesize user;
+@synthesize localUser;
+@synthesize ref;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     if ([self.segueIden isEqualToString:@"fromSaved"]) {
         [self.saveBtn setAccessibilityElementsHidden:YES];
     }
+    self.user = [FIRAuth auth].currentUser;
+    if (user) {
+        NSLog(@"before firestore");
+        self.db = [FIRFirestore firestore];
+        self.ref = [[self.db collectionWithPath:@"users"] documentWithPath:user.uid];
+    }
     
+
    
     //self.navBar.=[self.resto objectForKey:@"name"];
     // Do any additional setup after loading the view.
@@ -106,7 +118,7 @@
     [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[self.resto objectForKey:@"display_phone"]]];
     //Phone Number above^
     
-    
+    /*
     NSMutableString * transction = [[NSMutableString alloc] init];
     for(id object in [self.resto objectForKey:@"transactions"]){
         if( [object isEqualToString:@"pickup"])
@@ -131,12 +143,9 @@
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\nAccepts:"]];
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:transction]];
     }
+     */
     //Transactions ^
-<<<<<<< HEAD
-=======
-    self.detail_object.text = [details string];
->>>>>>> 827a44ba7c27dab3ccfacdc48313fcac4ec60e7c
-    
+
     self.detail_object.attributedText=details;
     self.detail_object.textColor = [UIColor whiteColor];
 }
@@ -146,16 +155,62 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)saveBtnAction:(id)sender {
-    FIRUser *user = [FIRAuth auth].currentUser;
+    self.user = [FIRAuth auth].currentUser;
+   
     if (user) {
-        // The user's ID, unique to the Firebase project.
-        // Do NOT use this value to authenticate with your backend server,
-        // if you have one. Use getTokenWithCompletion:completion: instead.
-        NSString *uid = user.uid;
         
-        // ...
+        self.db = [FIRFirestore firestore];
+        NSLog(@"%@", self.user.uid);
+        NSString* uid = self.user.uid;
+        FIRDocumentReference *docRef =
+        [[self.db collectionWithPath:@"users"] documentWithPath:uid];
+        [docRef getDocumentWithCompletion:^(FIRDocumentSnapshot *snapshot, NSError *error) {
+            if (snapshot.exists) {
+                NSLog(@"Document data: %@", snapshot.data);
+                NSLog(@"Document data: %@", [snapshot.data objectForKey:@"saved"]);
+                if ([[snapshot.data objectForKey:@"saved"] count] != 0){
+                    self.saved = [[snapshot.data objectForKey:@"saved"] mutableCopy];
+                    NSLog(@"in getting selfsaved= %@", self.saved);
+                }
+                else {
+                    self.saved = [[NSMutableArray alloc] init];
+                    
+                }
+                [self.saved addObject: [self.resto objectForKey:@"id"]];
+                NSLog(@"local saved %@", self.saved);
+                [[[self.db collectionWithPath:@"users"] documentWithPath:uid]
+                 setData:@{ @"saved": self.saved}
+                 options:[FIRSetOptions merge]
+                 completion:^(NSError * _Nullable error) {
+                     
+                     UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"Success"
+                                                                                  message:@"NomNom has successfully saved data"
+                                                                           preferredStyle:UIAlertControllerStyleAlert];
+                     
+                     UIAlertAction* yesButton = [UIAlertAction actionWithTitle:@"OK"
+                                                                         style:UIAlertActionStyleDefault
+                                                                       handler:^(UIAlertAction * action)
+                                                 {
+                                                     [self dismissViewControllerAnimated:YES completion:nil];
+                                                 }];
+                     [alert addAction:yesButton];
+                     [self presentViewController:alert animated:YES completion:nil];
+                     // ...
+                 }];
+            } else {
+                NSLog(@"Document does not exist");
+            }
+        }];
+       
+        
+        
+        
+         
+         
+        
+       
+        
     }
-    
 }
 - (IBAction)backBtnAction:(id)sender {
     if ([self.segueIden isEqualToString:@"cellToRestaurantSegue"]){

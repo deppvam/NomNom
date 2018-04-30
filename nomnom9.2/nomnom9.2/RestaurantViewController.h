@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import <Firebase/Firebase.h>
 #import <FirebaseAuth/FirebaseAuth.h>
+#import "UserInfo.h"
 
 @interface RestaurantViewController : ViewController
 @property (strong,nonatomic) NSMutableDictionary* resto;
@@ -22,5 +23,9 @@
 @property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
 @property (weak, nonatomic) NSString *segueIden;
 @property (weak, nonatomic) NSMutableArray *liked;
-@property (strong, nonatomic) FIRDatabaseReference *ref;
+@property (strong, nonatomic) FIRFirestore *db;
+@property (nonatomic,strong) NSMutableArray *saved;
+@property (strong, nonatomic) FIRUser *user;
+@property (strong, nonatomic) FIRDocumentReference *ref;
+@property UserInfo *localUser;
 @end

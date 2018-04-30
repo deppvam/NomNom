@@ -17,23 +17,11 @@
 @synthesize saved;
 @synthesize ref;
 @synthesize user;
+@synthesize localUser;
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.ref = [[FIRDatabase database] reference];
-    self.user = [FIRAuth auth].currentUser;
-    if (user) {
-        NSString *uid = user.uid;
-        NSString *email = user.email;
-        NSURL *photoURL = user.photoURL;
-    }
-    [[[self.ref child:@"userInfo"] child:@"userInfo"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot *snapshot) {
-        if (snapshot) {
-            [[self.ref child:@"userInfo"] ]
-        }
-        else {
-            
-        }
-    }];
+
+    
     // Do any additional setup after loading the view.
 }
 
@@ -50,7 +38,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.liked
+    return [self.saved
             count];
 }
 
@@ -61,12 +49,12 @@
     static NSString *CellIdentifier =@"Cell";
     UITableViewCell *cell = [tableView
                              dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    NSString *name = [[self.liked objectAtIndex: (int)indexPath.row] objectForKey:@"name"];
+    NSString *name = [[self.saved objectAtIndex: (int)indexPath.row] objectForKey:@"name"];
     cell.textLabel.text=name;
     
     
     
-    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [[self.liked  objectAtIndex:(int)indexPath.row] objectForKey:@"image_url"]]];
+    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [[self.saved  objectAtIndex:(int)indexPath.row] objectForKey:@"image_url"]]];
     cell.image = [UIImage imageWithData: imageData];
     
     

@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *confirmPassword;
 @property (weak, nonatomic) IBOutlet UIButton *SignUpButton;
 @property (weak, nonatomic) IBOutlet UILabel *errorMsg;
+@property (weak, nonatomic) FIRFirestore *fireStore;
 
 @end

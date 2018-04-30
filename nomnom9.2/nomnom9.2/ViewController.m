@@ -75,6 +75,7 @@
     CLLocation *location = [locations lastObject];
     self.lat = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
     self.lon = [NSString stringWithFormat:@"%f", location.coordinate.longitude];
+    NSLog(@"location got");
     [self initiate_request];
     [self.locationManager stopUpdatingLocation];
     
@@ -83,6 +84,7 @@
 - (void) initiate_request {
 
     self.requests = [[YelpRequest makeYelpRequest:self.lat long:self.lon radius:3000 limit:50 offset:self.offset] mutableCopy];
+    NSLog(@"here");
     self.item = [self swipeGenerator:self.requests];
     
     while ([[self.item objectForKey: @"is_closed"] boolValue] == YES || [[self.item objectForKey:@"price"] isEqualToString: @"(null)"]) {

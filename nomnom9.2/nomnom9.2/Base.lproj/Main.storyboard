@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Settings" id="dGT-ie-v3p">
+                                    <navigationItem title="Filters" id="dGT-ie-v3p">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="8Yg-bE-ntK">
                                             <connections>
                                                 <segue destination="BYZ-38-t0r" kind="presentation" id="Sko-j3-yIX"/>
@@ -248,9 +248,9 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L4n-VS-f4a">
-                                <rect key="frame" x="23" y="20" width="57" height="30"/>
+                                <rect key="frame" x="34" y="20" width="35" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Settings">
+                                <state key="normal" title="Filter">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -730,7 +730,7 @@
         <segue reference="DbY-FN-8Tk"/>
         <segue reference="gAa-Ha-bo5"/>
         <segue reference="fU2-EL-sGB"/>
-        <segue reference="kCz-rb-ELu"/>
-        <segue reference="Pq5-vr-hJC"/>
+        <segue reference="GgI-e7-f5m"/>
+        <segue reference="Sko-j3-yIX"/>
     </inferredMetricsTieBreakers>
 </document>
