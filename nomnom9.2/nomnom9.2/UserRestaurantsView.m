@@ -9,6 +9,9 @@
 #import "UserRestaurantsView.h"
 #import <Firebase/Firebase.h>
 #import <FirebaseAuth/FirebaseAuth.h>
+#import "YelpRequest.h"
+#import "RestaurantViewController.h"
+
 @interface UserRestaurantsView ()
 
 @end
@@ -18,9 +21,20 @@
 @synthesize ref;
 @synthesize user;
 @synthesize localUser;
+@synthesize savedRestaurants;
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
+    //this is heavy in YelpAPI requests... in the future we may want to cache this locally or on Firebase with a timestamp and then flush it if it's older than 24hours
+    savedRestaurants = [[NSMutableDictionary alloc] init];
+    for(NSString *obj in self.saved){
+        NSDictionary *currResto = [YelpRequest makeRestaurantRequest:obj];
+        NSLog(@"Saving... %@",currResto);
+        [savedRestaurants setObject:currResto forKey:obj];
+        NSLog(@"Retrieving...%@",[savedRestaurants objectForKey:obj]);
+    }
+    NSLog(@"it shouldn't be null.... %@",savedRestaurants);
+    
     
     // Do any additional setup after loading the view.
 }
@@ -46,19 +60,63 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView
         cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier =@"Cell";
+    static NSString *CellIdentifier =@"Cell1";
+    NSLog(@"%@",indexPath);
     UITableViewCell *cell = [tableView
                              dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    NSString *name = [[self.saved objectAtIndex: (int)indexPath.row] objectForKey:@"name"];
+    
+    NSString *currID=[self.saved objectAtIndex:(int)indexPath.row];
+    NSLog(@"currID=%@",currID);
+    
+    NSDictionary *currResto=[savedRestaurants objectForKey:currID];
+    NSLog(@"currResto=%@",currResto);
+    
+    NSString *name = [currResto objectForKey:@"name"];
+    NSLog(@"Restaurant for cell %@ with ID %@ with name %@", indexPath,currID,name);
     cell.textLabel.text=name;
     
     
     
-    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [[self.saved  objectAtIndex:(int)indexPath.row] objectForKey:@"image_url"]]];
+    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [[savedRestaurants objectForKey:[self.saved objectAtIndex:(int)indexPath.row]] objectForKey:@"image_url"]]];
     cell.image = [UIImage imageWithData: imageData];
     
-    
+    cell.textColor = [UIColor whiteColor];
     return cell;
 }
+
+-(IBAction)prepareForUnwind:(UIStoryboardSegue *)segue {
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"fromSaved"]) {
+        RestaurantViewController *destViewController = segue.destinationViewController;
+        UITableViewCell *cell = sender;
+        UITableView* table = (UITableView *)[cell superview];
+        NSIndexPath* indexPath = [table indexPathForCell:cell];
+        
+        
+        NSLog(@"%@", [NSString stringWithFormat:@"index: %@",indexPath.row]);
+        
+        
+        NSLog(@"Passing dictionary: %@",[self.savedRestaurants objectForKey:[self.saved objectAtIndex: (int)indexPath.row]]);
+        NSString *currID=[self.saved objectAtIndex:(int)indexPath.row];
+        NSLog(@"currID=%@",currID);
+        
+        NSDictionary *currResto=[savedRestaurants objectForKey:currID];
+        NSLog(@"currResto=%@",currResto);
+        
+        destViewController.resto = currResto;
+        
+        NSLog(@"moving to Single Resto view");
+        destViewController.segueIden = @"fromSaved";
+        destViewController.liked = self.savedRestaurants;
+    }
+    else if ([segue.identifier isEqualToString:@"backToView"]) {
+        ViewController *destViewController = segue.destinationViewController;
+        destViewController.likedFood = self.saved;
+        
+    }
+}
+
 
 @end

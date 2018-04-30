@@ -11,6 +11,61 @@
 @implementation YelpRequest
 
 
+// Returns the yelp business information for a given YELP ID
+/* Dictionary entires:
+    id                  NSString
+    alias               NSString
+    name                NSString
+    image_url           NSString
+    is_claimed          Bool
+    is_closed           Bool
+    url                 NSString
+    price               NSString
+    review_count        NSString
+    photos              NSArray
+    hours               NSDictionary
+    categories          NSArray
+    location            NSDictionary
+    transactions        NSArray
+ */
++ (NSDictionary*)makeRestaurantRequest:(NSString*)ID{
+    NSString *api_key = @"gH5KZskN3SWdOpqY_Ft9UtjhqyVlIsTu2qFzGN0k0_wlSP4LpN1_3a6j1vVYMhI-TAYaCk-PXt48S4WAPLsQ7IhOjmKByXtAvSEwhv0b9dbfLaNb6_sJi1dr-tzLWnYx"; // probably need to store this in firebase? maybe?
+    
+    //Set up our URL request
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setHTTPMethod:@"GET"];
+    NSString *url = [NSString stringWithFormat:@"https://api.yelp.com/v3/businesses/%@",ID]; //change this to change the site we're pinging
+    NSString *header = [NSString stringWithFormat:@"Bearer %@",api_key];
+    [request setURL:[NSURL URLWithString:url]];
+    [request setValue:header forHTTPHeaderField:@"Authorization"];
+    
+    NSURLResponse * response = nil;
+    NSError * error = nil;
+    
+    //Make the request and save the JSON data we get
+    NSData * data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error]; // Yes, this is deprecated. But it works for now as i try to get something workable
+    
+    NSDictionary *responseObj = [NSJSONSerialization
+                                 JSONObjectWithData:data
+                                 options:0
+                                 error:&error]; //a JSON dictionary of our stuff!!!
+    NSMutableDictionary *newDict = [[NSMutableDictionary alloc] init]; //initialize the dictionary
+
+    if([responseObj objectForKey:@"businesses"]!=nil){
+        NSArray *businesses = [responseObj objectForKey:@"businesses"]; //extract the businsses array from the JSON dictionary
+        //NSLog([responseObj description]);
+        
+        for(id obj in businesses){
+            if(newDict[[obj objectForKey:@"id"]]==nil)
+                newDict[[obj objectForKey:@"id"]] = obj;
+        }
+    }
+    else{
+        newDict = [responseObj mutableCopy];
+    }
+    return newDict;
+}
+
 /*  makes an API request
  *  arguments
  *      latitutde   - NSString              probably taken from gps services
@@ -41,6 +96,7 @@
  *                                                  distance            NSNumber            Distance from our GPS location
  *                                                  name                NSString            full title of restaurant
  */
+
 + (NSDictionary*)makeYelpRequest:(NSString*)latitude
                             long:(NSString*)longitude
                           radius:(int)rad

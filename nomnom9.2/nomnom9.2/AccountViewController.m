@@ -27,6 +27,31 @@
     self.user = [FIRAuth auth].currentUser;
     self.emailLabel.text = self.user.email;
     
+    if (user) {
+        
+        self.db = [FIRFirestore firestore];
+        NSLog(@"%@", self.user.uid);
+        NSString* uid = self.user.uid;
+        FIRDocumentReference *docRef =
+        [[self.db collectionWithPath:@"users"] documentWithPath:uid];
+        [docRef getDocumentWithCompletion:^(FIRDocumentSnapshot *snapshot, NSError *error) {
+            if (snapshot.exists) {
+                //NSLog(@"%@", NSStringFromClass([snapshot.data objectForKey:@"saved"]));
+                if ([[snapshot.data objectForKey:@"saved"] count] != 0){
+                    NSLog(@"%@",[snapshot.data objectForKey:@"saved"]);
+                    self.saved = [snapshot.data objectForKey:@"saved"];
+                    NSLog(@"in getting selfsaved= %@", self.saved);
+                }
+                else {
+                    self.saved = [[NSMutableArray alloc] init];
+                    
+                }
+            } else {
+                NSLog(@"Document does not exist");
+            }
+        }];
+    }
+    
     // Do any additional setup after loading the view.
 }
 
@@ -65,30 +90,6 @@
     self.user = [FIRAuth auth].currentUser;
     
     if (user) {
-        
-        self.db = [FIRFirestore firestore];
-        NSLog(@"%@", self.user.uid);
-        NSString* uid = self.user.uid;
-        FIRDocumentReference *docRef =
-        [[self.db collectionWithPath:@"users"] documentWithPath:uid];
-        [docRef getDocumentWithCompletion:^(FIRDocumentSnapshot *snapshot, NSError *error) {
-            if (snapshot.exists) {
-                NSLog(@"Document data: %@", snapshot.data);
-                NSLog(@"Document data: %@", [snapshot.data objectForKey:@"saved"]);
-                if ([[snapshot.data objectForKey:@"saved"] count] != 0){
-                    self.saved = [[snapshot.data objectForKey:@"saved"] mutableCopy];
-                    NSLog(@"in getting selfsaved= %@", self.saved);
-                }
-                else {
-                    self.saved = [[NSMutableArray alloc] init];
-                    
-                }
-                NSLog(@"local saved %@", self.saved);
-                
-            } else {
-                NSLog(@"Document does not exist");
-            }
-        }];
         [self performSegueWithIdentifier:@"savedSegue" sender:nil];
     }
     
@@ -106,13 +107,15 @@
     }
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString: @"likedFoodSegue"]) {
+    if ([segue.identifier isEqualToString: @"savedSegue"]) {
         UserRestaurantsView *destViewController = segue.destinationViewController;
-        destViewController.saved = [self.saved mutableCopy];
+        NSLog(@"%@",self.saved);
+        destViewController.saved = self.saved;
     }
 }
 
-
+-(IBAction)prepareForUnwind:(UIStoryboardSegue *)segue {
+}
 /*
 #pragma mark - Navigation
 
