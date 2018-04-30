@@ -8,6 +8,7 @@
 
 #import "RestaurantViewController.h"
 
+
 @interface RestaurantViewController ()
 
 @end
@@ -19,8 +20,17 @@
 @synthesize detail_object;
 @synthesize rating;
 @synthesize restoName;
+@synthesize backBtn;
+@synthesize saveBtn;
+@synthesize segueIden;
+@synthesize liked;
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if ([self.segueIden isEqualToString:@"fromSaved"]) {
+        [self.saveBtn setAccessibilityElementsHidden:YES];
+    }
+    
    
     //self.navBar.=[self.resto objectForKey:@"name"];
     // Do any additional setup after loading the view.
@@ -124,21 +134,44 @@
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:transction]];
     }
     //Transactions ^
-<<<<<<< HEAD
-    self.detail_object.text = [details string];
-=======
     
     self.detail_object.attributedText=details;
     self.detail_object.textColor = [UIColor whiteColor];
->>>>>>> 2cdb0e61333094068c40f0b499db54243a3afbe1
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)saveBtnAction:(id)sender {
+    FIRUser *user = [FIRAuth auth].currentUser;
+    if (user) {
+        // The user's ID, unique to the Firebase project.
+        // Do NOT use this value to authenticate with your backend server,
+        // if you have one. Use getTokenWithCompletion:completion: instead.
+        NSString *uid = user.uid;
+        
+        // ...
+    }
+    
+}
+- (IBAction)backBtnAction:(id)sender {
+    if ([self.segueIden isEqualToString:@"cellToRestaurantSegue"]){
+        
+        [self performSegueWithIdentifier:@"backToLiked" sender:nil];
+        
+    }
+    else if ([self.segueIden isEqualToString:@"fromSaved"]) {
+        [self performSegueWithIdentifier:@"backToSaved" sender:nil];
+    }
+}
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"backToLiked"]) {
+        ListViewController *destViewController = segue.destinationViewController;
+        destViewController.liked = self.liked;
+    }
+}
 /*
 #pragma mark - Navigation
 

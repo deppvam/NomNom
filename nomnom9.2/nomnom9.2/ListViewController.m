@@ -8,6 +8,7 @@
 
 #import "ListViewController.h"
 #import "RestaurantViewController.h"
+#import "ViewController.h"
 @interface ListViewController ()
 
 @end
@@ -87,6 +88,13 @@
         NSLog([NSString stringWithFormat:@"%@",[[self.liked objectAtIndex: (int)indexPath.row] description]]);
         destViewController.resto = [self.liked objectAtIndex: (int)indexPath.row];
         NSLog(@"moving to Single Resto view");
+        destViewController.segueIden = @"cellToRestaurantSegue";
+        destViewController.liked = self.liked;
+    }
+    else if ([segue.identifier isEqualToString:@"backToView"]) {
+        ViewController *destViewController = segue.destinationViewController;
+        destViewController.likedFood = self.liked;
+        
     }
 }
 

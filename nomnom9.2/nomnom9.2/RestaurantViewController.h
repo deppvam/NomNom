@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import <Firebase/Firebase.h>
+#import <FirebaseAuth/FirebaseAuth.h>
 
 @interface RestaurantViewController : ViewController
 @property (strong,nonatomic) NSMutableDictionary* resto;
@@ -15,5 +17,10 @@
 - (IBAction)sentToYelp:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *restoName;
 @property (weak, nonatomic) IBOutlet UITextView *rating;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *backBtn;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *saveBtn;
 @property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
+@property (weak, nonatomic) NSString *segueIden;
+@property (weak, nonatomic) NSMutableArray *liked;
+@property (strong, nonatomic) FIRDatabaseReference *ref;
 @end

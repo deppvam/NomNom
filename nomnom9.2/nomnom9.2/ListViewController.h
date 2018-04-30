@@ -7,7 +7,8 @@
 //
 
 #import "ViewController.h"
-
-@interface ListViewController : ViewController <UITableViewDataSource,UITableViewDelegate>
-@property (nonatomic,strong) NSArray *liked;
+#import <UIKit/UIKit.h>
+#include <stdlib.h>
+@interface ListViewController: UIViewController <UITableViewDataSource,UITableViewDelegate>
+@property (nonatomic,strong) NSMutableArray *liked;
 @end

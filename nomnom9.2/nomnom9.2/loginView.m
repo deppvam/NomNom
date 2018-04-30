@@ -18,6 +18,7 @@
 @synthesize emailText;
 @synthesize passwordInput;
 @synthesize errorMsg;
+@synthesize userid;
 
 - (void)viewDidLoad {
     
@@ -31,6 +32,9 @@
                            password:passwordInput.text
                          completion:^(FIRUser *user, NSError *error) {
                              if (!error) {
+                                 FIRUser *user = [FIRAuth auth].currentUser;
+                                 NSLog(@"user id is: %@", user.uid);
+                               
                                   [self performSegueWithIdentifier:@"loginSegue" sender:nil];
                              }
                              else {

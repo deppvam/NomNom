@@ -10,7 +10,8 @@
 #include <stdlib.h>
 #import <CoreLocation/CoreLocation.h>
 #import "YelpRequest.h"
-#import "LikeFoodTableViewController.h"
+#import "ListViewController.h"
+
 
 @interface ViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIView *LikeViewContainer;

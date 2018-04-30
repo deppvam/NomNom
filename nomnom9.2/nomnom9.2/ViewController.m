@@ -7,10 +7,10 @@
 //
 
 #import "ViewController.h"
+#import "ListViewController.h"
 #import "YelpRequest.h"
 #include <stdlib.h>
 #import <UIKit/UIKit.h>
-#import "FoodInfo.h"
 #import <CoreLocation/CoreLocation.h>
 
 
@@ -89,7 +89,10 @@
         self.item = [self swipeGenerator:self.requests];
     }
     [self setAll:self.item];
-    self.likedFood = [[NSMutableArray alloc] init];
+    if (!self.likedFood) {
+        self.likedFood = [[NSMutableArray alloc] init];
+    }
+    
     
 }
 
@@ -235,8 +238,8 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"likedFoodSegue"]) {
-        LikeFoodTableViewController *destViewController = segue.destinationViewController;
+    if ([segue.identifier isEqualToString: @"likedFoodSegue"]) {
+        ListViewController *destViewController = segue.destinationViewController;
         destViewController.liked = self.likedFood;
         NSLog(@"%i",[self.likedFood count]);
         NSLog(@"here");

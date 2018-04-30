@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T3k-lb-0Se">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T3k-lb-0Se">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -206,6 +206,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uM4-7s-aSd">
+                                <rect key="frame" x="157" y="386" width="60" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Sign Out"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="hix-7A-mih"/>
@@ -362,7 +367,7 @@
                                     <navigationItem title="Liked Restaurants" id="ZZ6-Vo-zPt">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="e0m-1A-n3f">
                                             <connections>
-                                                <segue destination="BYZ-38-t0r" kind="presentation" id="Pq5-vr-hJC"/>
+                                                <segue destination="BYZ-38-t0r" kind="presentation" identifier="backToView" id="Pq5-vr-hJC"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -412,13 +417,21 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem id="22B-BW-nUP">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="r9X-pr-ap9"/>
-                                        <barButtonItem key="rightBarButtonItem" title="Save" id="zBF-6v-7Um"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="r9X-pr-ap9">
+                                            <connections>
+                                                <action selector="backBtnAction:" destination="Hfv-gO-Rzc" id="hIR-zu-rn8"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Save" id="zBF-6v-7Um">
+                                            <connections>
+                                                <action selector="saveBtnAction:" destination="Hfv-gO-Rzc" id="h1e-NF-hrD"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dAC-Oj-Si3">
-                                <rect key="frame" x="0.0" y="97" width="375" height="375"/>
+                                <rect key="frame" x="0.0" y="97" width="375" height="324"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qKU-6J-xA6">
@@ -461,60 +474,32 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.7798001766204834" green="0.22844435274600983" blue="0.21154443919658661" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Click Below for Yelp Page" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4P-7e-89Y">
+                                <rect key="frame" x="90" y="443" width="194" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.4089167091" green="0.20702926499999999" blue="0.23005376559999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="9CL-VG-haN"/>
                     </view>
                     <connections>
+                        <outlet property="backBtn" destination="r9X-pr-ap9" id="iKq-km-0jA"/>
                         <outlet property="detail_object" destination="IAf-hk-c3a" id="zyD-qV-JlS"/>
                         <outlet property="image_url" destination="dAC-Oj-Si3" id="57R-Lx-mwF"/>
                         <outlet property="navBar" destination="Bgb-ht-mfM" id="4o9-7v-Ima"/>
                         <outlet property="rating" destination="Rfy-Hh-rkv" id="m96-PU-xB1"/>
                         <outlet property="restoName" destination="qKU-6J-xA6" id="Wz0-4Z-abs"/>
-                        <segue destination="ENP-LW-9EJ" kind="presentation" id="kCz-rb-ELu"/>
-                        <segue destination="3Z9-5Q-wdG" kind="presentation" id="DbY-FN-8Tk"/>
+                        <outlet property="saveBtn" destination="zBF-6v-7Um" id="Toy-8J-cP8"/>
+                        <segue destination="ENP-LW-9EJ" kind="presentation" identifier="backToLiked" id="kCz-rb-ELu"/>
+                        <segue destination="3Z9-5Q-wdG" kind="presentation" identifier="backToSaved" id="DbY-FN-8Tk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jww-PR-nYn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2" y="-639"/>
-        </scene>
-        <!--Like Food Table View Controller-->
-        <scene sceneID="BNk-mA-fkf">
-            <objects>
-                <tableViewController id="91w-jD-0wC" customClass="LikeFoodTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Sk7-RX-vO5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="9mv-L1-fXd" style="IBUITableViewCellStyleDefault" id="MbI-41-On0">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MbI-41-On0" id="92L-hz-Z6j">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9mv-L1-fXd">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="91w-jD-0wC" id="SgF-Y9-3he"/>
-                            <outlet property="delegate" destination="91w-jD-0wC" id="NNN-Az-fQk"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rDz-29-l7Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="582" y="92"/>
+            <point key="canvasLocation" x="0.80000000000000004" y="-639.13043478260875"/>
         </scene>
         <!--Login View-->
         <scene sceneID="R07-qq-QKB">
@@ -684,10 +669,10 @@
             </objects>
             <point key="canvasLocation" x="-1922.4000000000001" y="-639.13043478260875"/>
         </scene>
-        <!--View Controller-->
+        <!--User Restaurants View-->
         <scene sceneID="wj5-eN-URa">
             <objects>
-                <viewController id="3Z9-5Q-wdG" sceneMemberID="viewController">
+                <viewController id="3Z9-5Q-wdG" customClass="UserRestaurantsView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tXN-zP-Dmm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -714,7 +699,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Hfv-gO-Rzc" kind="presentation" id="fU2-EL-sGB"/>
+                                            <segue destination="Hfv-gO-Rzc" kind="presentation" identifier="fromSaved" id="fU2-EL-sGB"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
