@@ -72,6 +72,8 @@
     NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [[self.liked  objectAtIndex:(int)indexPath.row] objectForKey:@"image_url"]]];
     cell.image = [UIImage imageWithData: imageData];
     
+    cell.textColor = [UIColor whiteColor];
+    
     
     return cell;
 }
