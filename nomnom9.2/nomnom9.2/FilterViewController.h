@@ -11,9 +11,29 @@
 @interface FilterViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *typeText;
 @property (weak, nonatomic) IBOutlet UISwitch *TypeEnable;
-@property (weak, nonatomic) IBOutlet UIButton *oneDollar;
-@property (weak, nonatomic) IBOutlet UIButton *twoDollar;
-@property (weak, nonatomic) IBOutlet UIButton *threeDollar;
-@property (weak, nonatomic) IBOutlet UIButton *fourDollar;
+@property (weak, nonatomic) IBOutlet UILabel *minlabel;
+@property (weak, nonatomic) IBOutlet UILabel *maxlabel;
+
+
+
+
+
+- (IBAction)setMinOne:(id)sender;
+- (IBAction)setMinTwo:(id)sender;
+- (IBAction)setMinThree:(id)sender;
+- (IBAction)setMinFour:(id)sender;
+- (IBAction)setMinFive:(id)sender;
+
+- (IBAction)setMaxOne:(id)sender;
+- (IBAction)setMaxTwo:(id)sender;
+- (IBAction)setMaxThree:(id)sender;
+- (IBAction)setMaxFour:(id)sender;
+- (IBAction)setMaxFive:(id)sender;
+- (IBAction)distanceSlider:(id)sender;
+
+
+
+@property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
+
 
 @end

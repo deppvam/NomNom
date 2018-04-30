@@ -22,6 +22,24 @@
     
     FIRFirestore *defaultFirestore = [FIRFirestore firestore];
     // Override point for customization after application launch.
+    
+    // initialize defaults
+    NSString *dateKey    = @"dateKey";
+    NSDate *lastRead    = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:dateKey];
+    if (lastRead == nil)     // App first run: set up user defaults.
+    {
+        NSDictionary *appDefaults  = [NSDictionary dictionaryWithObjectsAndKeys:[NSDate date], dateKey, nil];
+        
+        // do any other initialization you want to do here - e.g. the starting default values.
+        // [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"should_play_sounds"];
+        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"minPrice"];
+        [[NSUserDefaults standardUserDefaults] setInteger:5 forKey:@"maxPrice"];
+        [[NSUserDefaults standardUserDefaults] setInteger:8000 forKey:@"distance"];//5miles?
+        // sync the defaults to disk
+        [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:dateKey];
     return YES;
 }
 
