@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface FilterViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *typeText;
+@property (weak, nonatomic) IBOutlet UISwitch *TypeEnable;
+@property (weak, nonatomic) IBOutlet UIButton *oneDollar;
+@property (weak, nonatomic) IBOutlet UIButton *twoDollar;
+@property (weak, nonatomic) IBOutlet UIButton *threeDollar;
+@property (weak, nonatomic) IBOutlet UIButton *fourDollar;
 
 @end
