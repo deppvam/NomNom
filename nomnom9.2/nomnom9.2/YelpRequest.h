@@ -11,6 +11,6 @@
 #import <CoreLocation/CoreLocation.h>
 
 @interface YelpRequest : NSObject
-+(NSDictionary*)makeYelpRequest:(NSString*)latitude long:(NSString*)longitude radius:(int)rad limit:(int)lim offset:(int)off;
++(NSDictionary*)makeYelpRequest:(NSString*)latitude long:(NSString*)longitude radius:(int)rad limit:(int)lim offset:(int)off min:(int)minP max:(int)maxP;
 @end
 

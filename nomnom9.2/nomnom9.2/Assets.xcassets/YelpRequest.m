@@ -45,13 +45,24 @@
                             long:(NSString*)longitude
                           radius:(int)rad
                            limit:(int)lim
-                          offset:(int)off{
+                          offset:(int)off
+                             min:(int)minP
+                             max:(int)maxP{
     NSString *api_key = @"gH5KZskN3SWdOpqY_Ft9UtjhqyVlIsTu2qFzGN0k0_wlSP4LpN1_3a6j1vVYMhI-TAYaCk-PXt48S4WAPLsQ7IhOjmKByXtAvSEwhv0b9dbfLaNb6_sJi1dr-tzLWnYx"; // probably need to store this in firebase? maybe?
     
     //Set up our URL request
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"GET"];
-    NSString *url = [NSString stringWithFormat:@"https://api.yelp.com/v3/businesses/search?latitude=%@&longitude=%@&radius=%d&limit=%d&offset=%d",latitude,longitude,rad,lim,off]; //change this to change the site we're pinging
+    
+    NSMutableString *prices = [[NSMutableString alloc] init];
+    for(int i=minP; i<=maxP; i++){
+        [prices appendString:@"i"];
+        if(i!=maxP){
+            [prices appendString:@","];
+        }
+    }
+    
+    NSString *url = [NSString stringWithFormat:@"https://api.yelp.com/v3/businesses/search?latitude=%@&longitude=%@&radius=%d&limit=%d&offset=%d&price=%@",latitude,longitude,rad,lim,off,prices]; //change this to change the site we're pinging
     NSString *header = [NSString stringWithFormat:@"Bearer %@",api_key];
     [request setURL:[NSURL URLWithString:url]];
     [request setValue:header forHTTPHeaderField:@"Authorization"];
