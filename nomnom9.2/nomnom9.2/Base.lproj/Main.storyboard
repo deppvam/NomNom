@@ -181,7 +181,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hA7-dn-Lwl" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="P5w-gh-me9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-564" y="-2733"/>
+            <point key="canvasLocation" x="-1740" y="-2858"/>
         </scene>
         <!--Account View Controller-->
         <scene sceneID="Pna-Yi-uxU">
@@ -290,7 +290,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EOZ-7J-1AB" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="DeV-ES-z9L" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="887" y="-2305"/>
+            <point key="canvasLocation" x="-663" y="-1995"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -421,7 +421,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-564" y="-1502"/>
+            <point key="canvasLocation" x="-1740" y="-1994"/>
         </scene>
         <!--List View Controller-->
         <scene sceneID="jr2-cR-fTK">
@@ -477,7 +477,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QsJ-gO-BLd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1959" y="19"/>
+            <point key="canvasLocation" x="-1740" y="-500"/>
         </scene>
         <!--Restaurant View Controller-->
         <scene sceneID="qcX-CI-BlQ">
@@ -574,7 +574,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jww-PR-nYn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-138" y="-402"/>
+            <point key="canvasLocation" x="-663" y="-500"/>
         </scene>
         <!--Login View-->
         <scene sceneID="R07-qq-QKB">
@@ -655,7 +655,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DLQ-n3-uE4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1530" y="-1480"/>
+            <point key="canvasLocation" x="-2663" y="-1993"/>
         </scene>
         <!--Signup View-->
         <scene sceneID="Wzz-6E-b2F">
@@ -742,7 +742,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lw0-aU-QjF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3033" y="-600"/>
+            <point key="canvasLocation" x="-2663" y="-1265"/>
         </scene>
         <!--User Restaurants View-->
         <scene sceneID="wj5-eN-URa">
@@ -797,7 +797,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hAy-tu-ciS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="P7Y-zq-sYH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="849" y="-1078"/>
+            <point key="canvasLocation" x="-663" y="-1265"/>
         </scene>
     </scenes>
     <resources>
@@ -805,10 +805,10 @@
         <image name="icon" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Jjv-5f-Ptn"/>
-        <segue reference="g6z-7N-JFQ"/>
-        <segue reference="fU2-EL-sGB"/>
-        <segue reference="GgI-e7-f5m"/>
-        <segue reference="cm1-2T-bni"/>
+        <segue reference="DbY-FN-8Tk"/>
+        <segue reference="gAa-Ha-bo5"/>
+        <segue reference="XLT-lT-bq2"/>
+        <segue reference="kCz-rb-ELu"/>
+        <segue reference="Pq5-vr-hJC"/>
     </inferredMetricsTieBreakers>
 </document>
