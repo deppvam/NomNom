@@ -630,7 +630,7 @@
                                 </state>
                                 <connections>
                                     <action selector="loginAction:" destination="T3k-lb-0Se" eventType="touchUpInside" id="w78-qf-I1Z"/>
-                                    <segue destination="C79-6q-NGw" kind="presentation" id="K4d-vq-8Bb"/>
+                                    <segue destination="C79-6q-NGw" kind="presentation" identifier="signUp" id="K4d-vq-8Bb"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6A-Ky-3c6">
@@ -698,7 +698,7 @@
                                 <rect key="frame" x="41" y="50" width="291" height="157"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLl-YD-qmP">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLl-YD-qmP">
                                 <rect key="frame" x="66" y="419" width="242" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.82745098039215681" green="0.82745098039215681" blue="0.82745098039215681" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -707,13 +707,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="skM-L2-8Zr">
-                                <rect key="frame" x="59" y="500" width="258" height="30"/>
+                                <rect key="frame" x="59" y="514" width="258" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Already Have an Account? Login Here">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="T3k-lb-0Se" kind="presentation" id="d1F-61-V7Q"/>
+                                    <action selector="goBack:" destination="C79-6q-NGw" eventType="touchUpInside" id="HCe-9J-f0L"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFH-tF-XLM">
@@ -738,12 +738,13 @@
                         <outlet property="emailText" destination="79K-V5-1g6" id="med-Zx-xrg"/>
                         <outlet property="errorMsg" destination="bLl-YD-qmP" id="VkK-oF-CUC"/>
                         <outlet property="passwordText" destination="qMb-Ri-N1h" id="6U1-1M-M1V"/>
-                        <segue destination="T3k-lb-0Se" kind="presentation" identifier="signupSuccess" id="gAa-Ha-bo5"/>
+                        <segue destination="VNE-Zn-mT4" kind="unwind" identifier="unwindToLogin" unwindAction="prepareForUnwind:" id="hwc-Dy-Z0Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lw0-aU-QjF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="VNE-Zn-mT4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-2663" y="-1265"/>
+            <point key="canvasLocation" x="-4343.1999999999998" y="-2251.1244377811095"/>
         </scene>
         <!--User Restaurants View-->
         <scene sceneID="wj5-eN-URa">
@@ -806,7 +807,6 @@
         <image name="icon" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="g6z-7N-JFQ"/>
         <segue reference="XLT-lT-bq2"/>
         <segue reference="kgA-Ju-4Yv"/>
     </inferredMetricsTieBreakers>

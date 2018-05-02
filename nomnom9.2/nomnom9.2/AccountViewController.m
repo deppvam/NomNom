@@ -37,11 +37,8 @@
         self.saved = [[NSArray alloc ] init];
         [docRef getDocumentWithCompletion:^(FIRDocumentSnapshot *snapshot, NSError *error) {
             if (snapshot.exists) {
-                //NSLog(@"%@", NSStringFromClass([snapshot.data objectForKey:@"saved"]));
                 if ([[snapshot.data objectForKey:@"saved"] count] != 0){
-                    NSLog(@"%@",[snapshot.data objectForKey:@"saved"]);
                     self.saved = [snapshot.data objectForKey:@"saved"];
-                    NSLog(@"in getting selfsaved= %@", self.saved);
                 }
                 else {
                     self.saved = [[NSMutableArray alloc] init];

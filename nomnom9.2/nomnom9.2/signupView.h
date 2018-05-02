@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *SignUpButton;
 @property (weak, nonatomic) IBOutlet UILabel *errorMsg;
 @property (weak, nonatomic) FIRFirestore *fireStore;
+- (IBAction)goBack:(id)sender;
 
 @end
