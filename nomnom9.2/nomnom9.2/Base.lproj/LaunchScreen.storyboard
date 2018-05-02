@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Ready To Swipe?Loading..." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ASL-Oa-yNL">
-                                <rect key="frame" x="36" y="366" width="310" height="116"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Food is like dates, you never know what you want until you see one..." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ASL-Oa-yNL">
+                                <rect key="frame" x="36" y="366" width="310" height="176"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="31"/>

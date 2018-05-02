@@ -785,10 +785,11 @@
         <image name="icon" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="xJB-RR-h2t"/>
         <segue reference="Jjv-5f-Ptn"/>
         <segue reference="g6z-7N-JFQ"/>
         <segue reference="fU2-EL-sGB"/>
-        <segue reference="kCz-rb-ELu"/>
+        <segue reference="GgI-e7-f5m"/>
         <segue reference="cm1-2T-bni"/>
     </inferredMetricsTieBreakers>
 </document>

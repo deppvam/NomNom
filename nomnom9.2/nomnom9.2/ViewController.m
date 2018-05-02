@@ -287,7 +287,7 @@
     }
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"OneTypeSwitch"]) {
         NSString *type = [[NSUserDefaults standardUserDefaults] stringForKey:@"type"];;
-        while (![self checkType:item :type]) {
+        while ([self checkType:item :type] == NO) {
             if (size == 0) {
                 self.DescriptionBox.text = @"Loading Yums";
                 UIImage *image = [UIImage imageNamed:@"icon"];
