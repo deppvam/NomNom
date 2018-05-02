@@ -37,13 +37,22 @@
     self.threeDollar.selected = prices[2];
     self.fourDollar.selected = prices[3];
     [self.oneDollar setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-    [self.oneDollar setTitleColor:[UIColor yellowColor] forState:UIControlStateNormal];
+    [self.oneDollar setTitleColor:[UIColor colorWithRed:255.0f/255.0f
+                                                  green:254.0f/255.0f
+                                                   blue:10.0f/255.0f
+                                                  alpha:1.0f] forState:UIControlStateNormal];
     [self.twoDollar setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-    [self.twoDollar setTitleColor:[UIColor yellowColor] forState:UIControlStateNormal];
+    [self.twoDollar setTitleColor:[UIColor colorWithRed:255.0f/255.0f
+                                                  green:254.0f/255.0f
+                                                   blue:10.0f/255.0f
+                                                  alpha:1.0f] forState:UIControlStateNormal];
     [self.threeDollar setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
     [self.threeDollar setTitleColor:[UIColor yellowColor] forState:UIControlStateNormal];
     [self.fourDollar setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-    [self.fourDollar setTitleColor:[UIColor yellowColor] forState:UIControlStateNormal];
+    [self.fourDollar setTitleColor:[UIColor colorWithRed:255.0f/255.0f
+                                                   green:254.0f/255.0f
+                                                    blue:10.0f/255.0f
+                                                   alpha:1.0f] forState:UIControlStateNormal];
     self.distanceValue.text = [NSString stringWithFormat:@"%.02f miles", self.distance.value/1600];
     // Do any additional setup after loading the view.
 }
