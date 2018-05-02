@@ -12,9 +12,10 @@
 #import "UserInfo.h"
 
 @interface UserRestaurantsView :UIViewController <UITableViewDataSource,UITableViewDelegate>
-@property (nonatomic,strong) NSMutableArray *saved;
+@property (nonatomic,strong) NSArray *saved;
 @property (strong, nonatomic) FIRDatabaseReference *ref;
 @property (strong, nonatomic) FIRUser *user;
 @property UserInfo *localUser;
+@property (strong,nonatomic) NSMutableDictionary *savedRestaurants;
 
 @end

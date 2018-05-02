@@ -114,7 +114,7 @@
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"cross_streets"]]];
     }
     //Address above^
-    
+    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n"]];
     [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[self.resto objectForKey:@"display_phone"]]];
     //Phone Number above^
     
