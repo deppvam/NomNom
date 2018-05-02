@@ -28,24 +28,15 @@
     
     //Make the request and save the JSON data we get
     NSData * data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error]; // Yes, this is deprecated. But it works for now as i try to get something workable
-    
+    NSLog(@"data %@",[data description]);
+
     NSDictionary *responseObj = [NSJSONSerialization
                                  JSONObjectWithData:data
                                  options:0
                                  error:&error]; //a JSON dictionary of our stuff!!!
     
-    
-    NSArray *businesses = [responseObj objectForKey:@"businesses"]; //extract the businsses array from the JSON dictionary
-    //NSLog([responseObj description]);
-    
-    NSMutableDictionary *newDict = [[NSMutableDictionary alloc] init]; //initialize the dictionary
-    BOOL oneType = [[NSUserDefaults standardUserDefaults] boolForKey:@"oneTypeSwitch"];
-    
-    for(id obj in businesses){
-        if(newDict[[obj objectForKey:@"id"]]==nil)
-            newDict[[obj objectForKey:@"id"]] = obj;
-    }
-    return newDict;
+    NSLog(@"responseObj %@",[responseObj description]);
+    return responseObj;
 }
 
 /*  makes an API request

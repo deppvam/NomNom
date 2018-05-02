@@ -90,27 +90,24 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"fromSaved"]) {
+        
         RestaurantViewController *destViewController = segue.destinationViewController;
         UITableViewCell *cell = sender;
         UITableView* table = (UITableView *)[cell superview];
         NSIndexPath* indexPath = [table indexPathForCell:cell];
         
-        
-        NSLog(@"%@", [NSString stringWithFormat:@"index: %@",indexPath.row]);
-        
-        
         NSLog(@"Passing dictionary: %@",[self.savedRestaurants objectForKey:[self.saved objectAtIndex: (int)indexPath.row]]);
         NSString *currID=[self.saved objectAtIndex:(int)indexPath.row];
         NSLog(@"currID=%@",currID);
         
-        NSDictionary *currResto=[savedRestaurants objectForKey:currID];
-        NSLog(@"currResto=%@",currResto);
+        NSDictionary *currResto=[self.savedRestaurants objectForKey:currID];
+        NSLog(@"currResto=%@",[currResto description]);
         
         destViewController.resto = currResto;
         
         NSLog(@"moving to Single Resto view");
         destViewController.segueIden = @"fromSaved";
-        destViewController.liked = self.savedRestaurants;
+        destViewController.resto = currResto;
     }
     else if ([segue.identifier isEqualToString:@"backToView"]) {
         ViewController *destViewController = segue.destinationViewController;
