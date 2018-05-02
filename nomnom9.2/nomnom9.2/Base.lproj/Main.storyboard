@@ -290,7 +290,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EOZ-7J-1AB" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="DeV-ES-z9L" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-190" y="-2755"/>
+            <point key="canvasLocation" x="-758" y="-1996"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -478,7 +478,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QsJ-gO-BLd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="OIF-wh-RyI" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1740" y="-500"/>
+            <point key="canvasLocation" x="-1740" y="-1265"/>
         </scene>
         <!--Restaurant View Controller-->
         <scene sceneID="qcX-CI-BlQ">
@@ -575,7 +575,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jww-PR-nYn" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="UEq-nf-3Dh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-582" y="-787"/>
+            <point key="canvasLocation" x="228" y="-1265"/>
         </scene>
         <!--Login View-->
         <scene sceneID="R07-qq-QKB">
@@ -798,7 +798,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hAy-tu-ciS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="P7Y-zq-sYH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="426" y="-1471"/>
+            <point key="canvasLocation" x="228" y="-1995"/>
         </scene>
     </scenes>
     <resources>
@@ -807,7 +807,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="g6z-7N-JFQ"/>
-        <segue reference="fU2-EL-sGB"/>
+        <segue reference="XLT-lT-bq2"/>
         <segue reference="kgA-Ju-4Yv"/>
     </inferredMetricsTieBreakers>
 </document>
