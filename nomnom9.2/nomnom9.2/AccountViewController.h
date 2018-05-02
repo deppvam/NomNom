@@ -10,8 +10,7 @@
 #import <Firebase/Firebase.h>
 #import <FirebaseAuth/FirebaseAuth.h>
 #import "UserRestaurantsView.h"
-
-@interface AccountViewController : ViewController
+@interface AccountViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 @property (weak, nonatomic) IBOutlet UITextField *resetPasswordField;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPasswordField;

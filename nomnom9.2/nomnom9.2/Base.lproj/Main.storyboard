@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Filter View Controller-->
         <scene sceneID="EHk-WN-koY">
             <objects>
-                <viewController id="mnc-UK-mx1" sceneMemberID="viewController">
+                <viewController id="mnc-UK-mx1" customClass="FilterViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kMT-C4-oSZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -224,7 +224,6 @@
                     <connections>
                         <outlet property="confirmPasswordField" destination="kKD-Vi-nAS" id="T95-Tr-sfM"/>
                         <outlet property="emailLabel" destination="hBD-c4-u26" id="NXQ-K2-81l"/>
-                        <outlet property="newPasswordField" destination="rdo-VK-Z5p" id="5VM-rP-w0T"/>
                         <outlet property="resetPasswordBtn" destination="xN3-nz-mZs" id="PLB-fc-AJ2"/>
                         <outlet property="resetPasswordField" destination="rdo-VK-Z5p" id="sD9-2q-mhz"/>
                         <outlet property="signoutBtn" destination="uM4-7s-aSd" id="ByV-3F-SA2"/>
@@ -586,14 +585,6 @@
                                 <color key="textColor" red="1" green="0.2349057473" blue="0.087543957180000007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aq6-EE-SzN">
-                                <rect key="frame" x="66" y="431" width="208" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.82745098039999998" green="0.82745098039999998" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Reset Password through Email">
-                                    <color key="titleColor" red="1" green="0.2349057473" blue="0.087543957180000007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.43529411764705883" green="0.19607843137254902" blue="0.23137254901960785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="faa-By-3rw"/>
