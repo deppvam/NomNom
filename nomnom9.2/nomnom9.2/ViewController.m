@@ -41,6 +41,7 @@
 @synthesize offset;
 
 - (void)viewDidLoad {
+    self.likedFood = [[[NSUserDefaults standardUserDefaults] objectForKey:@"liked"] mutableCopy];
     
     if ([CLLocationManager locationServicesEnabled]) {
         self.offset = 0;
@@ -53,7 +54,6 @@
     } else {
         NSLog(@"Location services are not enabled");
     }
-    
     
     
     
@@ -82,12 +82,13 @@
 }
 
 - (void) initiate_request {
-
-    self.requests = [[YelpRequest makeYelpRequest:self.lat long:self.lon radius:3000 limit:50 offset:self.offset] mutableCopy];
+    
+    NSLog(@"in initiate request, standeruserdaults distance is: %i", [[NSUserDefaults standardUserDefaults] integerForKey:@"distance"]);
+    self.requests = [[YelpRequest makeYelpRequest:self.lat long:self.lon radius:[[NSUserDefaults standardUserDefaults] integerForKey:@"distance"] limit:50 offset:self.offset] mutableCopy];
     NSLog(@"here");
     self.item = [self swipeGenerator:self.requests];
     
-    while ([[self.item objectForKey: @"is_closed"] boolValue] == YES || [[self.item objectForKey:@"price"] isEqualToString: @"(null)"]) {
+    while ([[self.item objectForKey: @"is_closed"] boolValue] == YES || [self.item objectForKey:@"price"] == nil) {
         self.item = [self swipeGenerator:self.requests];
     }
     [self setAll:self.item];
@@ -168,7 +169,9 @@
 }
 
 - (void)likeAct {
+    NSLog(@"in likeAct");
     [self.likedFood addObject:self.item];
+    NSLog(@"liked added");
     [self.FoodName setHidden:YES];
     [self.FoodImage setHidden:YES];
     [self.DescriptionBox setHidden:YES];
@@ -209,7 +212,9 @@
 - (id)swipeGenerator: (NSMutableDictionary *)allRequests {
     NSArray* keys = [allRequests allKeys];
     int size = [keys count];
-    NSLog(@"size is: %i", size);
+    NSMutableArray *prices = [[NSUserDefaults standardUserDefaults] objectForKey:@"prices"];
+
+    NSLog(@"in swipe generator, size is: %i", size);
     if (size == 0) {
         self.DescriptionBox.text = @"Loading Yums";
         UIImage *image = [UIImage imageNamed:@"icon"];
@@ -232,6 +237,78 @@
         index = (int) arc4random() % (size);
         key = keys[index];
         item = [allRequests objectForKey:key];
+    
+    NSString *price = [item objectForKey:@"price"];
+    int priceN = price.length;
+    NSLog(@"length of prices: %tu",[prices count]);
+    NSLog(@"price of the item: %@", price);
+    NSLog(@"length of the price: %tu", price.length);
+    while (price.length == 0) {
+        if (size == 0) {
+            self.DescriptionBox.text = @"Loading Yums";
+            UIImage *image = [UIImage imageNamed:@"icon"];
+            [self.FoodImage setImage: image];
+            [self.FoodImage setHidden:NO];
+            [self.FoodName setHidden:NO];
+            [self.DescriptionBox setHidden:NO];
+            self.offset +=50;
+            [self.locationManager startUpdatingLocation];
+            [self.locationManager stopUpdatingLocation];
+            return nil;
+        }
+        [allRequests removeObjectForKey:key];
+        size = [allRequests count];
+        index = (int) arc4random() % (size);
+        key = keys[index];
+        item = [allRequests objectForKey:key];
+        price = [item objectForKey:@"price"];
+        priceN = price.length;
+    }
+    while (prices && !prices[priceN-1]) {
+        if (size == 0) {
+            self.DescriptionBox.text = @"Loading Yums";
+            UIImage *image = [UIImage imageNamed:@"icon"];
+            [self.FoodImage setImage: image];
+            [self.FoodImage setHidden:NO];
+            [self.FoodName setHidden:NO];
+            [self.DescriptionBox setHidden:NO];
+            self.offset +=50;
+            [self.locationManager startUpdatingLocation];
+            [self.locationManager stopUpdatingLocation];
+            return nil;
+        }
+        [allRequests removeObjectForKey:key];
+        size = [allRequests count];
+        index = (int) arc4random() % (size);
+        key = keys[index];
+        item = [allRequests objectForKey:key];
+        price = [item objectForKey:@"price"];
+        priceN = price.length;
+    }
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"OneTypeSwitch"]) {
+        NSString *type = [[NSUserDefaults standardUserDefaults] stringForKey:@"type"];;
+        while (![self checkType:item :type]) {
+            if (size == 0) {
+                self.DescriptionBox.text = @"Loading Yums";
+                UIImage *image = [UIImage imageNamed:@"icon"];
+                [self.FoodImage setImage: image];
+                [self.FoodImage setHidden:NO];
+                [self.FoodName setHidden:NO];
+                [self.DescriptionBox setHidden:NO];
+                self.offset +=50;
+                [self.locationManager startUpdatingLocation];
+                [self.locationManager stopUpdatingLocation];
+                return nil;
+            }
+            [allRequests removeObjectForKey:key];
+            size = [allRequests count];
+            index = (int) arc4random() % (size);
+            
+            key = keys[index];
+            item = [allRequests objectForKey:key];
+        }
+        
+    }
     }
     
     [allRequests removeObjectForKey:key];
@@ -239,13 +316,33 @@
     return item;
 }
 
+-(BOOL) checkType: (NSDictionary *) business: (NSString *) type {
+    BOOL hasType = NO;
+    NSArray *types = [business objectForKey:@"categories"];
+    for (int i = 0; i < [types count]; i++) {
+        if ([[types[i] objectForKey:@"title"] isEqualToString:type]) {
+            hasType = YES;
+            return YES;
+            
+        }
+    }
+    return hasType;
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    //NSArray *likedArray =[self.likedFood copy] ;
+    //[[NSUserDefaults standardUserDefaults] setObject:likedArray forKey:@"liked"];
     if ([segue.identifier isEqualToString: @"likedFoodSegue"]) {
         ListViewController *destViewController = segue.destinationViewController;
         destViewController.liked = self.likedFood;
         NSLog(@"%i",[self.likedFood count]);
         NSLog(@"here");
     }
+    if ([segue.identifier isEqualToString: @"goFilter"]) {
+        FilterViewController *destViewController = segue.destinationViewController;
+        destViewController.liked = self.likedFood;
+    }
+    
 }
 
 - (IBAction)clickLike:(id)sender {

@@ -11,6 +11,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "YelpRequest.h"
 #import "ListViewController.h"
+#import "FilterViewController.h"
 
 
 @interface ViewController : UIViewController
@@ -34,5 +35,6 @@
 @property (strong, nonatomic) NSMutableDictionary *requests;
 @property (strong, nonatomic) NSMutableDictionary *item;
 @property int offset;
+@property BOOL reload;
 
 @end

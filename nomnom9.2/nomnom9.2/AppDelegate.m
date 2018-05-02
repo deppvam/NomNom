@@ -22,6 +22,30 @@
     
     FIRFirestore *defaultFirestore = [FIRFirestore firestore];
     // Override point for customization after application launch.
+    
+    // initialize defaults
+    NSString *dateKey    = @"dateKey";
+    NSDate *lastRead    = (NSDate *)[[NSUserDefaults standardUserDefaults] objectForKey:dateKey];
+    if (lastRead == nil)     // App first run: set up user defaults.
+    {
+        NSDictionary *appDefaults  = [NSDictionary dictionaryWithObjectsAndKeys:[NSDate date], dateKey, nil];
+        
+        // do any other initialization you want to do here - e.g. the starting default values.
+        NSMutableArray *prices = [@[@YES, @YES, @YES, @YES] mutableCopy];
+        [[NSUserDefaults standardUserDefaults] setObject:prices forKey:@"prices"];
+        // [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"should_play_sounds"];
+        [[NSUserDefaults standardUserDefaults] setInteger:8000 forKey:@"distance"];//5miles?
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"OneTypeSwitch"];
+        NSMutableArray *liked = [[NSMutableArray alloc] init];
+        NSMutableArray *saved = [[NSMutableArray alloc] init];
+        [[NSUserDefaults standardUserDefaults] setObject:liked forKey:@"liked"];
+        [[NSUserDefaults standardUserDefaults] setObject:saved forKey:@"saved"];
+        // sync the defaults to disk
+        [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:dateKey];
     return YES;
 }
 

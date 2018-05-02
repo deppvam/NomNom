@@ -72,6 +72,8 @@
     //NSLog([responseObj description]);
     
     NSMutableDictionary *newDict = [[NSMutableDictionary alloc] init]; //initialize the dictionary
+    BOOL oneType = [[NSUserDefaults standardUserDefaults] boolForKey:@"oneTypeSwitch"];
+    
     for(id obj in businesses){
         if(newDict[[obj objectForKey:@"id"]]==nil)
             newDict[[obj objectForKey:@"id"]] = obj;
