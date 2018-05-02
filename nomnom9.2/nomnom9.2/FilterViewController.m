@@ -37,13 +37,13 @@
     self.threeDollar.selected = prices[2];
     self.fourDollar.selected = prices[3];
     [self.oneDollar setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-    [self.oneDollar setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.oneDollar setTitleColor:[UIColor yellowColor] forState:UIControlStateNormal];
     [self.twoDollar setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-    [self.twoDollar setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.twoDollar setTitleColor:[UIColor yellowColor] forState:UIControlStateNormal];
     [self.threeDollar setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-    [self.threeDollar setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.threeDollar setTitleColor:[UIColor yellowColor] forState:UIControlStateNormal];
     [self.fourDollar setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-    [self.fourDollar setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.fourDollar setTitleColor:[UIColor yellowColor] forState:UIControlStateNormal];
     self.distanceValue.text = [NSString stringWithFormat:@"%.02f miles", self.distance.value/1600];
     // Do any additional setup after loading the view.
 }
@@ -136,6 +136,8 @@
         NSMutableArray *prices = [@[@(self.oneDollar.selected), @(self.twoDollar.selected), @(self.threeDollar.selected), @(self.fourDollar.selected)] mutableCopy];
         [[NSUserDefaults standardUserDefaults] setInteger:self.distance.value forKey:@"distance"];
       [[NSUserDefaults standardUserDefaults] setObject:prices forKey:@"prices"];
+        [[NSUserDefaults standardUserDefaults] setBool:self.TypeEnable.on forKey:@"OneTypeSwitch"];
+        [[NSUserDefaults standardUserDefaults] setObject:self.typeText.text forKey:@"type"];
         
         NSLog(@"back to main segue done");
         ViewController *destViewController = segue.destinationViewController;

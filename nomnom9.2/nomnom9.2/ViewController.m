@@ -210,12 +210,12 @@
 
 
 - (id)swipeGenerator: (NSMutableDictionary *)allRequests {
-    NSArray* keys = [allRequests allKeys];
-    int size = [keys count];
+    NSMutableArray* keys = [[allRequests allKeys] mutableCopy];
+    int size = (int)[allRequests count];
     NSMutableArray *prices = [[NSUserDefaults standardUserDefaults] objectForKey:@"prices"];
 
     NSLog(@"in swipe generator, size is: %i", size);
-    if (size == 0) {
+    if (size <= 0) {
         self.DescriptionBox.text = @"Loading Yums";
         UIImage *image = [UIImage imageNamed:@"icon"];
         [self.FoodImage setImage: image];
@@ -234,17 +234,23 @@
     NSLog(@"price is: %@", [self.item objectForKey:@"price"]);
     
     while (item == nil && size!=0) {
-        index = (int) arc4random() % (size);
+        size = (int)[allRequests count];
+        index = (int) (arc4random() % size);
         key = keys[index];
         item = [allRequests objectForKey:key];
+    }
     
     NSString *price = [item objectForKey:@"price"];
     int priceN = price.length;
     NSLog(@"length of prices: %tu",[prices count]);
     NSLog(@"price of the item: %@", price);
     NSLog(@"length of the price: %tu", price.length);
-    while (price.length == 0) {
-        if (size == 0) {
+    while (price.length == 0 || item == nil) {
+        
+        [keys removeObjectAtIndex:index];
+        [allRequests removeObjectForKey:key];
+        size = (int)[allRequests count];
+        if (size <= 0) {
             self.DescriptionBox.text = @"Loading Yums";
             UIImage *image = [UIImage imageNamed:@"icon"];
             [self.FoodImage setImage: image];
@@ -256,16 +262,18 @@
             [self.locationManager stopUpdatingLocation];
             return nil;
         }
-        [allRequests removeObjectForKey:key];
-        size = [allRequests count];
-        index = (int) arc4random() % (size);
+        index = (int) (arc4random() % size);
         key = keys[index];
         item = [allRequests objectForKey:key];
         price = [item objectForKey:@"price"];
         priceN = price.length;
     }
-    while (prices && !prices[priceN-1]) {
-        if (size == 0) {
+    while (item ==nil || (prices && !prices[priceN-1])) {
+        
+        [allRequests removeObjectForKey:key];
+        [keys removeObjectAtIndex:index];
+        size = (int)[allRequests count];
+        if (size <= 0) {
             self.DescriptionBox.text = @"Loading Yums";
             UIImage *image = [UIImage imageNamed:@"icon"];
             [self.FoodImage setImage: image];
@@ -277,18 +285,24 @@
             [self.locationManager stopUpdatingLocation];
             return nil;
         }
-        [allRequests removeObjectForKey:key];
-        size = [allRequests count];
-        index = (int) arc4random() % (size);
+        index = (int) (arc4random() % size);
         key = keys[index];
         item = [allRequests objectForKey:key];
         price = [item objectForKey:@"price"];
         priceN = price.length;
     }
+        BOOL b =[[NSUserDefaults standardUserDefaults] boolForKey:@"OneTypeSwitch"];
+        NSLog(@"bool value: %d", b);
+        NSLog(@"type value is: %@", [[NSUserDefaults standardUserDefaults] stringForKey:@"type"]);
+        
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"OneTypeSwitch"]) {
         NSString *type = [[NSUserDefaults standardUserDefaults] stringForKey:@"type"];;
-        while ([self checkType:item :type] == NO) {
-            if (size == 0) {
+        while (item ==nil || [self checkType:item :type] == NO) {
+            
+            [allRequests removeObjectForKey:key];
+            [keys removeObjectAtIndex:index];
+            size = (int)[allRequests count];
+            if (size <= 0) {
                 self.DescriptionBox.text = @"Loading Yums";
                 UIImage *image = [UIImage imageNamed:@"icon"];
                 [self.FoodImage setImage: image];
@@ -300,19 +314,18 @@
                 [self.locationManager stopUpdatingLocation];
                 return nil;
             }
-            [allRequests removeObjectForKey:key];
-            size = [allRequests count];
-            index = (int) arc4random() % (size);
-            
+            index = (int) (arc4random() % size);
+            NSLog(@"size is: %i", size);
+            NSLog(@"index is: %i", index);
             key = keys[index];
             item = [allRequests objectForKey:key];
         }
         
     }
-    }
+    
     
     [allRequests removeObjectForKey:key];
-    
+    [keys removeObjectAtIndex:index];
     return item;
 }
 
