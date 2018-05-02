@@ -12,6 +12,6 @@
 @property NSString *uid;
 @property NSString *email;
 @property NSMutableArray *saved;
--(instancetype) initWithAttributes :(NSString*) userid: (NSString*)em:(NSMutableArray*) save;
+-(instancetype) initWithAttributes :(NSString*)userid email:(NSString*)em saved:(NSMutableArray*) save;
 @end
 

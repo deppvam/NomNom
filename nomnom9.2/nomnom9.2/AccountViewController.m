@@ -64,7 +64,7 @@
     
     if ([FIRAuth auth].currentUser) {
         if (self.resetPasswordField.text && self.confirmPasswordField.text) {
-            if ([self.resetPasswordField.text isEqualToString:self.confirmPasswordField]) {
+            if ([self.resetPasswordField.text isEqualToString:self.confirmPasswordField.text]) {
                 [[FIRAuth auth].currentUser updatePassword:self.resetPasswordField.text completion:^(NSError *_Nullable error) {
                     // ...
                 }];

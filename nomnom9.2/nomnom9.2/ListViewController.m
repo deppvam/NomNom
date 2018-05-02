@@ -34,7 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"%i",[self.liked count]);
+    NSLog(@"%luu",(unsigned long)[self.liked count]);
     
     
 }
@@ -86,8 +86,8 @@
         UITableViewCell *cell = sender;
         UITableView* table = (UITableView *)[cell superview];
         NSIndexPath* indexPath = [table indexPathForCell:cell];
-        NSLog([NSString stringWithFormat:@"index: %d",indexPath.row]);
-        NSLog([NSString stringWithFormat:@"%@",[[self.liked objectAtIndex: (int)indexPath.row] description]]);
+        NSLog(@"index: %ld",(long)indexPath.row);
+        NSLog(@"%@",[[self.liked objectAtIndex: (int)indexPath.row] description]);
         destViewController.resto = [self.liked objectAtIndex: (int)indexPath.row];
         NSLog(@"moving to Single Resto view");
         destViewController.segueIden = @"cellToRestaurantSegue";

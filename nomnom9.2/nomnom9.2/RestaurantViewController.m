@@ -73,7 +73,7 @@
     
     //Image
     NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [self.resto objectForKey:@"image_url"]]];
-    NSLog([[self.resto objectForKey:@"image_url"] description]);
+    NSLog(@"%@",[[self.resto objectForKey:@"image_url"] description]);
     [self.image_url setImage:[UIImage imageWithData: imageData]];
     
     //set detail box : detail_object

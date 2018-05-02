@@ -109,11 +109,6 @@
         destViewController.segueIden = @"fromSaved";
         destViewController.resto = currResto;
     }
-    else if ([segue.identifier isEqualToString:@"backToView"]) {
-        ViewController *destViewController = segue.destinationViewController;
-        destViewController.likedFood = self.saved;
-        
-    }
 }
 
 
