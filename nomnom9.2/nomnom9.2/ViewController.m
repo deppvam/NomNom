@@ -83,8 +83,8 @@
 
 - (void) initiate_request {
     
-    NSLog(@"in initiate request, standeruserdaults distance is: %i", [[NSUserDefaults standardUserDefaults] integerForKey:@"distance"]);
-    self.requests = [[YelpRequest makeYelpRequest:self.lat long:self.lon radius:[[NSUserDefaults standardUserDefaults] integerForKey:@"distance"] limit:50 offset:self.offset] mutableCopy];
+    NSLog(@"in initiate request, standeruserdaults distance is: %li", (long)[[NSUserDefaults standardUserDefaults] integerForKey:@"distance"]);
+    self.requests = [[YelpRequest makeYelpRequest:self.lat long:self.lon radius:(int)[[NSUserDefaults standardUserDefaults] integerForKey:@"distance"] limit:50 offset:self.offset] mutableCopy];
     NSLog(@"here");
     self.item = [self swipeGenerator:self.requests];
     
@@ -178,7 +178,7 @@
     self.LikeViewContainer.transform = CGAffineTransformRotate(self.LikeViewContainer.transform, M_PI/2);
     [self.LikeViewContainer setHidden:NO];
     NSString* likedFoodName = self.FoodName.text;
-    NSString * message = [[NSString alloc] initWithString:@"You liked "];
+    NSString * message =@"You liked ";
     self.LikedLabel.text= [message stringByAppendingString:likedFoodName];
     
     [self.LikedImage setImage:self.FoodImage.image];
@@ -241,7 +241,7 @@
     }
     
     NSString *price = [item objectForKey:@"price"];
-    int priceN = price.length;
+    int priceN = (int)price.length;
     NSLog(@"length of prices: %tu",[prices count]);
     NSLog(@"price of the item: %@", price);
     NSLog(@"length of the price: %tu", price.length);
@@ -266,7 +266,7 @@
         key = keys[index];
         item = [allRequests objectForKey:key];
         price = [item objectForKey:@"price"];
-        priceN = price.length;
+        priceN = (int)price.length;
     }
     while (item ==nil || (prices && !prices[priceN-1])) {
         
@@ -289,7 +289,7 @@
         key = keys[index];
         item = [allRequests objectForKey:key];
         price = [item objectForKey:@"price"];
-        priceN = price.length;
+        priceN = (int)price.length;
     }
         BOOL b =[[NSUserDefaults standardUserDefaults] boolForKey:@"OneTypeSwitch"];
         NSLog(@"bool value: %d", b);
@@ -348,7 +348,7 @@
     if ([segue.identifier isEqualToString: @"likedFoodSegue"]) {
         ListViewController *destViewController = segue.destinationViewController;
         destViewController.liked = self.likedFood;
-        NSLog(@"%i",[self.likedFood count]);
+        NSLog(@"%lu",(unsigned long)[self.likedFood count]);
         NSLog(@"here");
     }
     if ([segue.identifier isEqualToString: @"goFilter"]) {

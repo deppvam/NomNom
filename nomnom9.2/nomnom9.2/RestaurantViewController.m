@@ -73,7 +73,7 @@
     
     //Image
     NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [self.resto objectForKey:@"image_url"]]];
-    NSLog([[self.resto objectForKey:@"image_url"] description]);
+    NSLog(@"%@",[[self.resto objectForKey:@"image_url"] description]);
     [self.image_url setImage:[UIImage imageWithData: imageData]];
     
     //set detail box : detail_object
@@ -114,7 +114,7 @@
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"cross_streets"]]];
     }
     //Address above^
-    
+    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n"]];
     [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[self.resto objectForKey:@"display_phone"]]];
     //Phone Number above^
     
