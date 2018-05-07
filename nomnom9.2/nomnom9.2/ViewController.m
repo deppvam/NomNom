@@ -116,10 +116,23 @@
 -(void) dislikeAct {
 
     self.item = [self swipeGenerator:self.requests];
+    
+    
     while ([[self.item objectForKey: @"is_closed"] boolValue] == YES || [[self.item objectForKey:@"price"] isEqual: @"(null)"]) {
         self.item = [self swipeGenerator:self.requests];
     }
-    [self setAll:self.item];
+    
+    if (self.item == nil){
+        self.DescriptionBox.text = @"Loading Yums";
+        UIImage *image = [UIImage imageNamed:@"icon"];
+        [self.FoodImage setImage: image];
+        [self.FoodImage setHidden:NO];
+        [self.FoodName setHidden:NO];
+        [self.DescriptionBox setHidden:NO];
+    }
+    else {
+        [self setAll:self.item];
+    }
     
 }
 
@@ -200,10 +213,22 @@
     while ([[self.item objectForKey: @"is_closed"] boolValue] == YES || [[self.item objectForKey:@"price"] isEqualToString: @"(null)"]) {
         self.item = [self swipeGenerator:self.requests];
     }
-    [self setAll:self.item];
-    [self.FoodImage setHidden:NO];
-    [self.FoodName setHidden:NO];
-    [self.DescriptionBox setHidden:NO];
+    if (self.item == nil){
+        self.DescriptionBox.text = @"Loading Yums";
+        UIImage *image = [UIImage imageNamed:@"icon"];
+        [self.FoodImage setImage: image];
+        [self.FoodImage setHidden:NO];
+        [self.FoodName setHidden:NO];
+        [self.DescriptionBox setHidden:NO];
+        
+    }
+    else {
+        [self setAll:self.item];
+        [self.FoodImage setHidden:NO];
+        [self.FoodName setHidden:NO];
+        [self.DescriptionBox setHidden:NO];
+    }
+    
     
 }
 
@@ -212,8 +237,8 @@
 - (id)swipeGenerator: (NSMutableDictionary *)allRequests {
     NSMutableArray* keys = [[allRequests allKeys] mutableCopy];
     int size = (int)[allRequests count];
-    NSMutableArray *prices = [[NSUserDefaults standardUserDefaults] objectForKey:@"prices"];
-
+    NSArray *prices= [[NSUserDefaults standardUserDefaults] objectForKey:@"prices"];
+   
     NSLog(@"in swipe generator, size is: %i", size);
     if (size <= 0) {
         self.DescriptionBox.text = @"Loading Yums";
@@ -242,15 +267,13 @@
     
     NSString *price = [item objectForKey:@"price"];
     int priceN = (int)price.length;
-    NSLog(@"length of prices: %tu",[prices count]);
-    NSLog(@"price of the item: %@", price);
-    NSLog(@"length of the price: %tu", price.length);
-    while (price.length == 0 || item == nil) {
-        
+    
+    while (price ==nil || price.length == 0) {
+        NSLog(@"checking if there is price");
         [keys removeObjectAtIndex:index];
         [allRequests removeObjectForKey:key];
         size = (int)[allRequests count];
-        if (size <= 0) {
+        if (size <= 0 || item == nil) {
             self.DescriptionBox.text = @"Loading Yums";
             UIImage *image = [UIImage imageNamed:@"icon"];
             [self.FoodImage setImage: image];
@@ -268,12 +291,15 @@
         price = [item objectForKey:@"price"];
         priceN = (int)price.length;
     }
-    while (item ==nil || (prices && !prices[priceN-1])) {
-        
+    
+    while ((priceN < 1 && ![prices[priceN-1] boolValue])) {
+        NSLog(@"checking if price matches");
+        NSLog(@"price is: %i", priceN);
         [allRequests removeObjectForKey:key];
         [keys removeObjectAtIndex:index];
         size = (int)[allRequests count];
-        if (size <= 0) {
+        NSLog(@"size is: %i", size);
+        if (size <= 0 || item == nil) {
             self.DescriptionBox.text = @"Loading Yums";
             UIImage *image = [UIImage imageNamed:@"icon"];
             [self.FoodImage setImage: image];
@@ -297,12 +323,12 @@
         
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"OneTypeSwitch"]) {
         NSString *type = [[NSUserDefaults standardUserDefaults] stringForKey:@"type"];;
-        while (item ==nil || [self checkType:item :type] == NO) {
-            
-            [allRequests removeObjectForKey:key];
+        while ([self checkType:item :type] == NO) {
+            NSLog(@"checking if type matches");
             [keys removeObjectAtIndex:index];
+            [allRequests removeObjectForKey:key];
             size = (int)[allRequests count];
-            if (size <= 0) {
+            if (size <= 0 || item == nil) {
                 self.DescriptionBox.text = @"Loading Yums";
                 UIImage *image = [UIImage imageNamed:@"icon"];
                 [self.FoodImage setImage: image];
@@ -314,6 +340,7 @@
                 [self.locationManager stopUpdatingLocation];
                 return nil;
             }
+            
             index = (int) (arc4random() % size);
             NSLog(@"size is: %i", size);
             NSLog(@"index is: %i", index);

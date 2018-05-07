@@ -32,10 +32,11 @@
     self.distance.value = [[NSUserDefaults standardUserDefaults] integerForKey:@"distance"];
     self.TypeEnable.on =[[NSUserDefaults standardUserDefaults] integerForKey:@"OneTypeSwitch"];
     self.typeText.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"type"];
-    self.oneDollar.selected = prices[0];
-    self.twoDollar.selected = prices[1];
-    self.threeDollar.selected = prices[2];
-    self.fourDollar.selected = prices[3];
+    
+    self.oneDollar.selected = [prices[0] boolValue];
+    self.twoDollar.selected = [prices[1] boolValue];
+    self.threeDollar.selected = [prices[2] boolValue];
+    self.fourDollar.selected = [prices[3] boolValue];
     [self.oneDollar setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
     [self.oneDollar setTitleColor:[UIColor colorWithRed:255.0f/255.0f
                                                   green:254.0f/255.0f
@@ -142,7 +143,8 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString: @"ApplyFilter"]) {
-        NSMutableArray *prices = [@[@(self.oneDollar.selected), @(self.twoDollar.selected), @(self.threeDollar.selected), @(self.fourDollar.selected)] mutableCopy];
+        
+        NSArray *prices = @[[NSNumber numberWithBool: self.oneDollar.selected], [NSNumber numberWithBool: self.twoDollar.selected], [NSNumber numberWithBool: self.threeDollar.selected], [NSNumber numberWithBool: self.fourDollar.selected]];
         [[NSUserDefaults standardUserDefaults] setInteger:self.distance.value forKey:@"distance"];
       [[NSUserDefaults standardUserDefaults] setObject:prices forKey:@"prices"];
         [[NSUserDefaults standardUserDefaults] setBool:self.TypeEnable.on forKey:@"OneTypeSwitch"];
