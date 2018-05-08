@@ -95,18 +95,16 @@
     NSDictionary *location = [self.resto objectForKey:@"location"];
     [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n"]];
     
-    if([location objectForKey:@"address1"]!=nil && [[location objectForKey:@"address1"] length] != 0 ){
+    if([[location objectForKey:@"address1"] class]!=NSClassFromString(@"NSNull") && [[location objectForKey:@"address1"] length] != 0 ){
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"address1"]]];
     }
     NSLog(@"Sucessfully past: address1");
     
-    if([location objectForKey:@"address2"]!=nil && [[location objectForKey:@"address2"] length] != 0 ){
+    if([[location objectForKey:@"address2"] class]!=NSClassFromString(@"NSNull") && [[location objectForKey:@"address2"] length] != 0 ){
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n"]];
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"address2"]]];
     }
-    NSLog(@"Sucessfully past: address2");
-    
-    if([location objectForKey:@"address3"]!=nil && [[location objectForKey:@"address3"] length] != 0 ){
+    if([[location objectForKey:@"address3"] class]!=NSClassFromString(@"NSNull") && [[location objectForKey:@"address3"] length] != 0 ){
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n"]];
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"address3"]]];
     }
@@ -121,7 +119,7 @@
     //[details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@","]];
     //[details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"country"]]];
     
-    if([location objectForKey:@"cross_streets"]!=nil && [[location objectForKey:@"cross_streets"] length] != 0 ){
+    if([[location objectForKey:@"cross_streets"] class]!=NSClassFromString(@"NSNull") && [[location objectForKey:@"cross_streets"] length] != 0 ){
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n b/t "]];
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"cross_streets"]]];
     }
