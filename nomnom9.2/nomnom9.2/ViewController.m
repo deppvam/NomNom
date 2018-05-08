@@ -398,11 +398,15 @@
 }
 
 - (IBAction)clickLike:(id)sender {
-    [self likeAct];
+    if(self.LikedImage.hidden==YES){
+        [self likeAct];
+    }
 }
 
 - (IBAction)clickDislike:(id)sender {
-    [self dislikeAct];
+    if(self.LikedImage.hidden==YES){
+        [self dislikeAct];
+    }
 }
 
 
