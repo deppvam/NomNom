@@ -3,7 +3,7 @@
 //  nomnom9.2
 //
 //  Created by Joanna Wang on 4/29/18.
-//  Copyright © 2018 nyuguest. All rights reserved.
+//  Copyright © 2018 NomNom. All rights reserved.
 //
 
 #import "signupView.h"
@@ -24,10 +24,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+
+//Goes back without doing anything
 - (IBAction)goBack:(id)sender{
     [self performSegueWithIdentifier:@"unwindToLogin" sender:nil];
 }
 
+//Signs up, Unwinds if sign up successful; otherwise gives error message
 - (IBAction)signupAction:(id)sender {
     if (!self.emailText.text || self.emailText.text.length ==0) {
         self.errorMsg.text = @"Please enter email";

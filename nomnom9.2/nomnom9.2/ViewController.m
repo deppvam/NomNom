@@ -38,7 +38,7 @@
 @synthesize lat;
 @synthesize requests;
 @synthesize item;
-@synthesize offset;
+@synthesize offset; //How many of these are.... used...
 
 - (void)viewDidLoad {
     self.likedFood = [[[NSUserDefaults standardUserDefaults] objectForKey:@"liked"] mutableCopy];
@@ -155,6 +155,18 @@
     imageAttachment.bounds = CGRectMake(0, imageOffsetY, imageAttachment.image.size.width, imageAttachment.image.size.height);
     NSAttributedString *attachmentString = [NSAttributedString attributedStringWithAttachment:imageAttachment];
     [description appendAttributedString:attachmentString];
+    
+    NSTextAttachment *imageAttachment2 = [[NSTextAttachment alloc] init];
+    
+    imageAttachment2.image = [UIImage imageNamed:@"Yelp_trademark_RGB"];
+    imageOffsetY = -1*imageAttachment.image.size.height*3/2.5;
+    imageAttachment2.bounds = CGRectMake(20, imageOffsetY, imageAttachment.image.size.height/imageAttachment2.image.size.height*imageAttachment2.image.size.width*3, imageAttachment.image.size.height*3);
+    attachmentString = [NSAttributedString attributedStringWithAttachment:imageAttachment2];
+    [description appendAttributedString:attachmentString];
+    
+    //Yelp Icon
+    //Yelp_trademark_CMYK_fullcolor
+    
     //End Yelp Branding
     
     //[description appendFormat:@"%@\n", [business objectForKey:@"rating"]];

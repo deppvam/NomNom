@@ -2,8 +2,9 @@
 //  loginView.m
 //  nomnom9.2
 //
+//  Log In and defaut opening view
 //  Created by Joanna Wang on 4/29/18.
-//  Copyright © 2018 nyuguest. All rights reserved.
+//  Copyright © 2018 NomNom. All rights reserved.
 //
 
 #import "loginView.h"
@@ -13,26 +14,27 @@
 @interface loginView ()
 @end
 @implementation loginView
-@synthesize loginBtn;
-@synthesize signupBtn;
+@synthesize loginBtn; //unused outside of interface builer
+@synthesize signupBtn; //unused outside of interface builer
 @synthesize emailText;
 @synthesize passwordInput;
 @synthesize errorMsg;
-@synthesize userid;
+@synthesize userid; //unused - in other views, userid is grabbed from firebase instead
+
 
 - (void)viewDidLoad {
     
     [self.errorMsg setHidden:YES];
     [super viewDidLoad];
-    NSLog(@"==========Sucessfully loaded logInView==========");
     // Do any additional setup after loading the view.
 }
+// On Pressing Log In, check with Authenticate with firebase.
 - (IBAction)loginAction:(id)sender {
     
-    [[FIRAuth auth] signInWithEmail:emailText.text
-                           password:passwordInput.text
+    [[FIRAuth auth] signInWithEmail:self.emailText.text
+                           password:self.passwordInput.text
                          completion:^(FIRUser *user, NSError *error) {
-                             if (!error) {
+                             if (!error) { //Log In Successful
                                  FIRUser *user = [FIRAuth auth].currentUser;
                                  NSLog(@"user id is: %@\nSending To Main View", user.uid);
                                  
@@ -46,8 +48,12 @@
                                  }
                                  else if (error.code == FIRAuthErrorCodeWrongPassword) {
                                      self.errorMsg.text = @"Wrong Password, please try again";
+                                     [self.errorMsg setHidden:NO];
                                      [self.errorMsg sizeToFit];
                                     
+                                 }
+                                 else {
+                                     NSLog(@"Other error: %ld",error.code);
                                  }
                              }
                              // ...
@@ -67,6 +73,8 @@
         NSLog(@"==========Segue to MainView==========");
     }
 }
+//Other segue to SignUp view -> Exclusively through Interface Builder. Nothing programmatic required.
+
 
 /*
 #pragma mark - Navigation

@@ -39,7 +39,7 @@
         NSMutableArray *liked = [[NSMutableArray alloc] init];
         NSMutableArray *saved = [[NSMutableArray alloc] init];
         [[NSUserDefaults standardUserDefaults] setObject:liked forKey:@"liked"];
-        [[NSUserDefaults standardUserDefaults] setObject:saved forKey:@"saved"];
+        [[NSUserDefaults standardUserDefaults] setObject:saved forKey:@"saved"]; //Warning: When getting an object from NSUserDefaults, it will *always* be immutable
         // sync the defaults to disk
         [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
         [[NSUserDefaults standardUserDefaults] synchronize];
