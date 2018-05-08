@@ -130,32 +130,33 @@
     [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[self.resto objectForKey:@"display_phone"]]];
     //Phone Number above^
     
-    /*
+    
     NSMutableString * transction = [[NSMutableString alloc] init];
     for(id object in [self.resto objectForKey:@"transactions"]){
         if( [object isEqualToString:@"pickup"])
         {
             [transction appendString:@"Order Pickup"];
-            [transction appendString:@","];
+            [transction appendString:@", "];
         }
         if( [object isEqualToString:@"delivery"])
         {
             [transction appendString:@"Order Delivery"];
-            [transction appendString:@","];
+            [transction appendString:@", "];
         }
         if( [object isEqualToString:@"restaurant_reservation"])
         {
             [transction appendString:@"Reservations"];
-            [transction appendString:@","];
+            [transction appendString:@", "];
         }
     }
-    if(transction!=nil && [transction length] != 0)
+    NSLog(@"transactions %@",transction);
+    if([transction class]!=NSClassFromString(@"NSNull") && [transction length] != 0)
     {
-        transction = [[NSMutableString alloc] initWithString:[@"Categories" stringByAppendingString:transction]];
+        transction = [[NSMutableString alloc] initWithString: [transction substringToIndex:[transction length]-2]];
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\nAccepts:"]];
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:transction]];
     }
-     */
+     //*/
     //Transactions ^
 
     self.detail_object.attributedText=details;
@@ -172,7 +173,7 @@
     if (user) {
         
         self.db = [FIRFirestore firestore];
-        NSLog(@"%@", self.user.uid);
+        
         NSString* uid = self.user.uid;
         FIRDocumentReference *docRef =
         [[self.db collectionWithPath:@"users"] documentWithPath:uid];
@@ -213,17 +214,9 @@
                 NSLog(@"Document does not exist");
             }
         }];
-       
-        
-        
-        
-         
-         
-        
-       
-        
-    }
-}
+    } //end if(user)
+    //else: shouldn't happen?
+}//end save button
 - (IBAction)backBtnAction:(id)sender {
     if ([self.segueIden isEqualToString:@"cellToRestaurantSegue"]){
         
