@@ -28,7 +28,9 @@
     self.emailLabel.text = self.user.email;
     
     if (user) {
-        
+        [self.viewSavedRestaurantsBtn setUserInteractionEnabled:NO];
+        [self.viewSavedRestaurantsBtn setTitle:@"Loading Saved Restaurants" forState: UIControlStateNormal];
+
         self.db = [FIRFirestore firestore];
         NSLog(@"%@", self.user.uid);
         NSString* uid = self.user.uid;
@@ -39,10 +41,14 @@
             if (snapshot.exists) {
                 if ([[snapshot.data objectForKey:@"saved"] count] != 0){
                     self.saved = [snapshot.data objectForKey:@"saved"];
+                    [self.viewSavedRestaurantsBtn setUserInteractionEnabled:YES];
+                    [self.viewSavedRestaurantsBtn setTitle:@"View Saved Restaurants" forState: UIControlStateNormal];
+
                 }
                 else {
                     self.saved = [[NSMutableArray alloc] init];
-                    
+                    [self.viewSavedRestaurantsBtn setTitle:@"You haven't saved any restaurants yet!" forState: UIControlStateNormal];
+
                 }
             } else {
                 NSLog(@"Document does not exist");

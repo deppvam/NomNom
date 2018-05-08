@@ -85,10 +85,14 @@
     [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[self.resto objectForKey:@"price"]]];
     [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@" · "]];
     //Price above ^
+    NSMutableAttributedString *categ = [[NSMutableAttributedString alloc] initWithString:@""];
     for(id object in [self.resto objectForKey:@"categories"]){
-        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[object objectForKey:@"title"]]];
-        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@","]];
+        if(![categ isEqualToAttributedString:[[NSMutableAttributedString alloc] initWithString:@""]]){
+            [categ appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@","]];
+        }
+        [categ appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[object objectForKey:@"title"]]];
     }
+    [details appendAttributedString:categ];
     //Categories above ^
     // address image here [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n\nAddress:\t\t"]];
     
@@ -153,7 +157,7 @@
     if([transction class]!=NSClassFromString(@"NSNull") && [transction length] != 0)
     {
         transction = [[NSMutableString alloc] initWithString: [transction substringToIndex:[transction length]-2]];
-        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\nAccepts:"]];
+        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\nAccepts: "]];
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:transction]];
     }
      //*/
