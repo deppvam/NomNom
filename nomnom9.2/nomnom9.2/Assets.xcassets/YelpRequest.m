@@ -11,6 +11,34 @@
 @implementation YelpRequest
 
 
++ (NSDictionary*)makeRestaurantRequest:(NSString*)ID{
+    NSString *api_key = @"gH5KZskN3SWdOpqY_Ft9UtjhqyVlIsTu2qFzGN0k0_wlSP4LpN1_3a6j1vVYMhI-TAYaCk-PXt48S4WAPLsQ7IhOjmKByXtAvSEwhv0b9dbfLaNb6_sJi1dr-tzLWnYx"; // probably need to store this in firebase? maybe?
+    
+    //Set up our URL request
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setHTTPMethod:@"GET"];
+
+    NSString *url = [NSString stringWithFormat:@"https://api.yelp.com/v3/businesses/%@",ID]; //change this to change the site we're pinging
+    NSString *header = [NSString stringWithFormat:@"Bearer %@",api_key];
+    [request setURL:[NSURL URLWithString:url]];
+    [request setValue:header forHTTPHeaderField:@"Authorization"];
+    
+    NSURLResponse * response = nil;
+    NSError * error = nil;
+    
+    //Make the request and save the JSON data we get
+    NSData * data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error]; // Yes, this is deprecated. But it works for now as i try to get something workable
+    NSLog(@"data %@",[data description]);
+
+    NSDictionary *responseObj = [NSJSONSerialization
+                                 JSONObjectWithData:data
+                                 options:0
+                                 error:&error]; //a JSON dictionary of our stuff!!!
+    
+    NSLog(@"responseObj %@",[responseObj description]);
+    return responseObj;
+}
+
 /*  makes an API request
  *  arguments
  *      latitutde   - NSString              probably taken from gps services
@@ -72,6 +100,8 @@
     //NSLog([responseObj description]);
     
     NSMutableDictionary *newDict = [[NSMutableDictionary alloc] init]; //initialize the dictionary
+    BOOL oneType = [[NSUserDefaults standardUserDefaults] boolForKey:@"oneTypeSwitch"];
+    
     for(id obj in businesses){
         if(newDict[[obj objectForKey:@"id"]]==nil)
             newDict[[obj objectForKey:@"id"]] = obj;

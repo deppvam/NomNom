@@ -31,9 +31,12 @@
 @synthesize ref;
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    NSLog(self.segueIden);
     if ([self.segueIden isEqualToString:@"fromSaved"]) {
-        [self.saveBtn setAccessibilityElementsHidden:YES];
+        self.saveBtn.enabled = NO;
+    }
+    else {
+        self.saveBtn.enabled = YES;
     }
     self.user = [FIRAuth auth].currentUser;
     if (user) {
@@ -73,7 +76,7 @@
     
     //Image
     NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [self.resto objectForKey:@"image_url"]]];
-    NSLog([[self.resto objectForKey:@"image_url"] description]);
+    NSLog(@"%@",[[self.resto objectForKey:@"image_url"] description]);
     [self.image_url setImage:[UIImage imageWithData: imageData]];
     
     //set detail box : detail_object
@@ -91,15 +94,24 @@
     
     NSDictionary *location = [self.resto objectForKey:@"location"];
     [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n"]];
-    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"address1"]]];
+    
+    if([location objectForKey:@"address1"]!=nil && [[location objectForKey:@"address1"] length] != 0 ){
+        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"address1"]]];
+    }
+    NSLog(@"Sucessfully past: address1");
+    
     if([location objectForKey:@"address2"]!=nil && [[location objectForKey:@"address2"] length] != 0 ){
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n"]];
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"address2"]]];
     }
+    NSLog(@"Sucessfully past: address2");
+    
     if([location objectForKey:@"address3"]!=nil && [[location objectForKey:@"address3"] length] != 0 ){
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n"]];
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"address3"]]];
     }
+    NSLog(@"Sucessfully past: address3");
+    
     [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n"]];
     [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"city"]]];
     [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@","]];
@@ -113,8 +125,10 @@
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n b/t "]];
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"cross_streets"]]];
     }
-    //Address above^
     
+    
+    //Address above^
+    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n"]];
     [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[self.resto objectForKey:@"display_phone"]]];
     //Phone Number above^
     

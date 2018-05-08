@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>670060362375-0pgj4hqn3aem8thtlim3jh096j6ltt8a.apps.googleusercontent.com</string>
+	<string>613079507554-403leg087v93glo3nm84cntjilq4jkig.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.670060362375-0pgj4hqn3aem8thtlim3jh096j6ltt8a</string>
+	<string>com.googleusercontent.apps.613079507554-403leg087v93glo3nm84cntjilq4jkig</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCQWrqQcMam2hdFCiLH5PSumheK8nSDCcA</string>
+	<string>AIzaSyCpOhxUHP0fVVRjbskAwWL1JkoWNFliRvA</string>
 	<key>GCM_SENDER_ID</key>
-	<string>670060362375</string>
+	<string>613079507554</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>nomnom.nyu.edu</string>
+	<string>nomnomAlexJoanna</string>
 	<key>PROJECT_ID</key>
-	<string>nom-nom-98bb5</string>
+	<string>nomnom-alex-joanna</string>
 	<key>STORAGE_BUCKET</key>
-	<string>nom-nom-98bb5.appspot.com</string>
+	<string>nomnom-alex-joanna.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:670060362375:ios:a196fd1ef7f33576</string>
+	<string>1:613079507554:ios:b8114fcf49257177</string>
 	<key>DATABASE_URL</key>
-	<string>https://nom-nom-98bb5.firebaseio.com</string>
+	<string>https://nomnom-alex-joanna.firebaseio.com</string>
 </dict>
 </plist>

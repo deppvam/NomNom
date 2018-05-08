@@ -27,6 +27,29 @@
     self.user = [FIRAuth auth].currentUser;
     self.emailLabel.text = self.user.email;
     
+    if (user) {
+        
+        self.db = [FIRFirestore firestore];
+        NSLog(@"%@", self.user.uid);
+        NSString* uid = self.user.uid;
+        FIRDocumentReference *docRef =
+        [[self.db collectionWithPath:@"users"] documentWithPath:uid];
+        self.saved = [[NSArray alloc ] init];
+        [docRef getDocumentWithCompletion:^(FIRDocumentSnapshot *snapshot, NSError *error) {
+            if (snapshot.exists) {
+                if ([[snapshot.data objectForKey:@"saved"] count] != 0){
+                    self.saved = [snapshot.data objectForKey:@"saved"];
+                }
+                else {
+                    self.saved = [[NSMutableArray alloc] init];
+                    
+                }
+            } else {
+                NSLog(@"Document does not exist");
+            }
+        }];
+    }
+    
     // Do any additional setup after loading the view.
 }
 
@@ -38,7 +61,7 @@
     
     if ([FIRAuth auth].currentUser) {
         if (self.resetPasswordField.text && self.confirmPasswordField.text) {
-            if ([self.resetPasswordField.text isEqualToString:self.confirmPasswordField]) {
+            if ([self.resetPasswordField.text isEqualToString:self.confirmPasswordField.text]) {
                 [[FIRAuth auth].currentUser updatePassword:self.resetPasswordField.text completion:^(NSError *_Nullable error) {
                     // ...
                 }];
@@ -106,9 +129,9 @@
     }
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString: @"likedFoodSegue"]) {
+    if ([segue.identifier isEqualToString: @"savedSegue"]) {
         UserRestaurantsView *destViewController = segue.destinationViewController;
-        destViewController.saved = [self.saved mutableCopy];
+        destViewController.saved = self.saved;
     }
 }
 
@@ -122,5 +145,8 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+-(IBAction)prepareForUnwind:(UIStoryboardSegue *)segue {
+}
 
 @end

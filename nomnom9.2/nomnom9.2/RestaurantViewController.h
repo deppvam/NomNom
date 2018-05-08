@@ -12,7 +12,7 @@
 #import "UserInfo.h"
 
 @interface RestaurantViewController : ViewController
-@property (strong,nonatomic) NSMutableDictionary* resto;
+@property (strong,nonatomic) NSDictionary* resto;
 @property (weak, nonatomic) IBOutlet UIImageView *image_url;
 @property (weak, nonatomic) IBOutlet UITextView *detail_object;
 - (IBAction)sentToYelp:(id)sender;

@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ViewController.h"
 
 @interface FilterViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *typeText;
+@property (weak, nonatomic) IBOutlet UISwitch *TypeEnable;
+@property (weak, nonatomic) IBOutlet UIButton *oneDollar;
+@property (weak, nonatomic) IBOutlet UIButton *twoDollar;
+@property (weak, nonatomic) IBOutlet UIButton *threeDollar;
+@property (weak, nonatomic) IBOutlet UIButton *fourDollar;
+@property (weak, nonatomic) IBOutlet UISlider *distance;
+@property (weak, nonatomic) IBOutlet UIButton *applyFilter;
+@property (weak, nonatomic) IBOutlet UILabel *distanceValue;
+@property (weak, nonatomic) NSMutableArray *liked;
 
 @end

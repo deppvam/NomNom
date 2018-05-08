@@ -13,7 +13,7 @@
 @synthesize email;
 @synthesize saved;
 
--(instancetype) initWithAttributes :(NSString*) userid: (NSString*)em:(NSMutableArray*) save {
+-(instancetype) initWithAttributes :(NSString*)userid email:(NSString*)em saved:(NSMutableArray*) save {
     self = [super init];
     if (self) {
         self.uid = userid;

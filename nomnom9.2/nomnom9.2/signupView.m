@@ -24,11 +24,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+- (IBAction)goBack:(id)sender{
+    [self performSegueWithIdentifier:@"unwindToLogin" sender:nil];
+}
+
 - (IBAction)signupAction:(id)sender {
     if (!self.emailText.text || self.emailText.text.length ==0) {
         self.errorMsg.text = @"Please enter email";
         [self.errorMsg sizeToFit];
         [self.errorMsg setHidden:NO];
+        return;
     }
     else if (!self.passwordText.text|| self.passwordText.text.length ==0) {
         self.errorMsg.text = @"Please enter password";
@@ -52,19 +57,18 @@
                                      if (!error) {
                                          NSMutableArray* saved = [[NSMutableArray alloc] init];
                                          self.fireStore= [FIRFirestore firestore];
-                                         
                                          [[[self.fireStore collectionWithPath:@"users"] documentWithPath:user.uid] setData:@{
-                                                                                                                                                          @"uid": user.uid,
-                                                                                                                                                          @"email": user.email,
-                                                                                                                                                          @"saved": saved
-                                                                                                                                                          } completion:^(NSError * _Nullable error) {
-                                                                                                                                                              if (error != nil) {
-                                                                                                                                                                  NSLog(@"Error writing document: %@", error);
-                                                                                                                                                              } else {
-                                                                                                                                                                  NSLog(@"Document successfully written!");
-                                                                                                                                                              }
-                                                                                                                                                          }];
-                                        
+                                              @"uid": user.uid,
+                                              @"email": user.email,
+                                              @"saved": saved
+                                              } completion:^(NSError * _Nullable error) {
+                                                  if (error != nil) {
+                                                  NSLog(@"Error writing document: %@", error);
+                                              } else {
+                                                  NSLog(@"Document successfully written!");
+                                              }
+                                          }];
+
                                          UIAlertController *alert=[UIAlertController alertControllerWithTitle:@"Sign Up Success"
                                                                                                        message:@"Take me to log in!"
                                                                                                 preferredStyle:UIAlertControllerStyleAlert];
@@ -73,7 +77,7 @@
                                                                                              style:UIAlertActionStyleDefault
                                                                                            handler:^(UIAlertAction * action)
                                          {
-                                             [self performSegueWithIdentifier:@"signupSuccess" sender:nil];
+                                             [self performSegueWithIdentifier:@"unwindToLogin" sender:nil];
                                          }];
                                          [alert addAction:yesButton];
                                          [self presentViewController:alert animated:YES completion:nil];

@@ -19,6 +19,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *signoutBtn;
 @property (weak, nonatomic) FIRUser *user;
 @property (strong, nonatomic) FIRFirestore *db;
-@property (weak, nonatomic) NSArray *saved;
+@property (strong, nonatomic) NSArray *saved;
 
 @end

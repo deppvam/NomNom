@@ -16,7 +16,6 @@
 		5E3A1F2120911C840081C6C7 /* nomnom9_2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A1F2020911C840081C6C7 /* nomnom9_2Tests.m */; };
 		5E3A1F2C20911C840081C6C7 /* nomnom9_2UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A1F2B20911C840081C6C7 /* nomnom9_2UITests.m */; };
 		5E3A1F4420911E450081C6C7 /* YelpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A1F4320911E450081C6C7 /* YelpRequest.m */; };
-		5E3A1F4720911FEA0081C6C7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E3A1F4520911FEA0081C6C7 /* GoogleService-Info.plist */; };
 		5E3A1F51209129080081C6C7 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A1F50209129080081C6C7 /* ListViewController.m */; };
 		5E3A1F5A20913C370081C6C7 /* RestaurantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A1F5920913C370081C6C7 /* RestaurantViewController.m */; };
 		5E3A1F5D20913C770081C6C7 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A1F5C20913C770081C6C7 /* SettingViewController.m */; };
@@ -24,6 +23,7 @@
 		70EE3966A2A5921514979E42 /* libPods-nomnom9.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC3F941E7159044618123827 /* libPods-nomnom9.2.a */; };
 		96033362E48E112D7F6A83E0 /* libPods-nomnom9.2Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 004016CAD2AFE31ABAF39D61 /* libPods-nomnom9.2Tests.a */; };
 		9E2EBB3B209759D200A8B673 /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2EBB3A209759D200A8B673 /* FilterViewController.m */; };
+		9E2EBB3D20975D1500A8B673 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E2EBB3C20975D1500A8B673 /* GoogleService-Info.plist */; };
 		9E41C24720966B43002D3D77 /* signupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E41C24620966B43002D3D77 /* signupView.m */; };
 		9EA283EE20969CEF00450436 /* UserRestaurantsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EA283ED20969CEF00450436 /* UserRestaurantsView.m */; };
 		9EA283F12096A2F500450436 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EA283F02096A2F500450436 /* UserInfo.m */; };
@@ -71,7 +71,6 @@
 		5E3A1F2D20911C840081C6C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E3A1F4220911E350081C6C7 /* YelpRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YelpRequest.h; sourceTree = "<group>"; };
 		5E3A1F4320911E450081C6C7 /* YelpRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = YelpRequest.m; path = Assets.xcassets/YelpRequest.m; sourceTree = "<group>"; };
-		5E3A1F4520911FEA0081C6C7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5E3A1F4F209129080081C6C7 /* ListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
 		5E3A1F50209129080081C6C7 /* ListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 		5E3A1F5820913C370081C6C7 /* RestaurantViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RestaurantViewController.h; sourceTree = "<group>"; };
@@ -84,6 +83,7 @@
 		6D06CB847AF716A2D3369CC8 /* Pods-nomnom9.2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nomnom9.2.release.xcconfig"; path = "Pods/Target Support Files/Pods-nomnom9.2/Pods-nomnom9.2.release.xcconfig"; sourceTree = "<group>"; };
 		9E2EBB39209759D200A8B673 /* FilterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterViewController.h; sourceTree = "<group>"; };
 		9E2EBB3A209759D200A8B673 /* FilterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
+		9E2EBB3C20975D1500A8B673 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9E41C24520966B43002D3D77 /* signupView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = signupView.h; sourceTree = "<group>"; };
 		9E41C24620966B43002D3D77 /* signupView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = signupView.m; sourceTree = "<group>"; };
 		9EA283EC20969CEF00450436 /* UserRestaurantsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserRestaurantsView.h; sourceTree = "<group>"; };
@@ -173,36 +173,36 @@
 		5E3A1F0620911C840081C6C7 /* nomnom9.2 */ = {
 			isa = PBXGroup;
 			children = (
-				5E3A1F0720911C840081C6C7 /* AppDelegate.h */,
-				5E3A1F0820911C840081C6C7 /* AppDelegate.m */,
-				5E3A1F5820913C370081C6C7 /* RestaurantViewController.h */,
-				5E3A1F5920913C370081C6C7 /* RestaurantViewController.m */,
-				5E3A1F0A20911C840081C6C7 /* ViewController.h */,
-				5E3A1F0B20911C840081C6C7 /* ViewController.m */,
-				5E3A1F4220911E350081C6C7 /* YelpRequest.h */,
-				5E3A1F4320911E450081C6C7 /* YelpRequest.m */,
-				5E3A1F0D20911C840081C6C7 /* Main.storyboard */,
-				9EA283EC20969CEF00450436 /* UserRestaurantsView.h */,
-				9EA283ED20969CEF00450436 /* UserRestaurantsView.m */,
-				9EA283EF2096A2F500450436 /* UserInfo.h */,
-				9EA283F02096A2F500450436 /* UserInfo.m */,
-				9ED84433209630510002F56D /* loginView.h */,
-				9ED84434209630510002F56D /* loginView.m */,
-				5E3A1F1220911C840081C6C7 /* LaunchScreen.storyboard */,
-				5E3A1F5B20913C770081C6C7 /* SettingViewController.h */,
-				5E3A1F5C20913C770081C6C7 /* SettingViewController.m */,
+				9E2EBB3C20975D1500A8B673 /* GoogleService-Info.plist */,
 				5E3A1F5E20913C7D0081C6C7 /* AccountViewController.h */,
 				5E3A1F5F20913C7D0081C6C7 /* AccountViewController.m */,
+				5E3A1F0720911C840081C6C7 /* AppDelegate.h */,
+				5E3A1F0820911C840081C6C7 /* AppDelegate.m */,
 				5E3A1F4F209129080081C6C7 /* ListViewController.h */,
 				5E3A1F50209129080081C6C7 /* ListViewController.m */,
-				5E3A1F1020911C840081C6C7 /* Assets.xcassets */,
-				5E3A1F1520911C840081C6C7 /* Info.plist */,
-				5E3A1F4520911FEA0081C6C7 /* GoogleService-Info.plist */,
+				9ED84433209630510002F56D /* loginView.h */,
+				9ED84434209630510002F56D /* loginView.m */,
 				5E3A1F1620911C840081C6C7 /* main.m */,
+				5E3A1F5820913C370081C6C7 /* RestaurantViewController.h */,
+				5E3A1F5920913C370081C6C7 /* RestaurantViewController.m */,
+				5E3A1F5B20913C770081C6C7 /* SettingViewController.h */,
+				5E3A1F5C20913C770081C6C7 /* SettingViewController.m */,
 				9E41C24520966B43002D3D77 /* signupView.h */,
 				9E41C24620966B43002D3D77 /* signupView.m */,
 				9E2EBB39209759D200A8B673 /* FilterViewController.h */,
 				9E2EBB3A209759D200A8B673 /* FilterViewController.m */,
+				9EA283EF2096A2F500450436 /* UserInfo.h */,
+				9EA283F02096A2F500450436 /* UserInfo.m */,
+				9EA283EC20969CEF00450436 /* UserRestaurantsView.h */,
+				9EA283ED20969CEF00450436 /* UserRestaurantsView.m */,
+				5E3A1F4220911E350081C6C7 /* YelpRequest.h */,
+				5E3A1F4320911E450081C6C7 /* YelpRequest.m */,
+				5E3A1F0A20911C840081C6C7 /* ViewController.h */,
+				5E3A1F0B20911C840081C6C7 /* ViewController.m */,
+				5E3A1F1220911C840081C6C7 /* LaunchScreen.storyboard */,
+				5E3A1F0D20911C840081C6C7 /* Main.storyboard */,
+				5E3A1F1520911C840081C6C7 /* Info.plist */,
+				5E3A1F1020911C840081C6C7 /* Assets.xcassets */,
 			);
 			path = nomnom9.2;
 			sourceTree = "<group>";
@@ -336,7 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E3A1F1420911C840081C6C7 /* LaunchScreen.storyboard in Resources */,
-				5E3A1F4720911FEA0081C6C7 /* GoogleService-Info.plist in Resources */,
+				9E2EBB3D20975D1500A8B673 /* GoogleService-Info.plist in Resources */,
 				5E3A1F1120911C840081C6C7 /* Assets.xcassets in Resources */,
 				5E3A1F0F20911C840081C6C7 /* Main.storyboard in Resources */,
 			);
@@ -615,6 +615,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = nomnom9.2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nyu.edu.nomnom9-2";
@@ -629,6 +630,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = nomnom9.2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nyu.edu.nomnom9-2";

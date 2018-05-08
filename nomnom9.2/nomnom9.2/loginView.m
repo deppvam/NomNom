@@ -24,6 +24,7 @@
     
     [self.errorMsg setHidden:YES];
     [super viewDidLoad];
+    NSLog(@"==========Sucessfully loaded logInView==========");
     // Do any additional setup after loading the view.
 }
 - (IBAction)loginAction:(id)sender {
@@ -33,8 +34,8 @@
                          completion:^(FIRUser *user, NSError *error) {
                              if (!error) {
                                  FIRUser *user = [FIRAuth auth].currentUser;
-                                 NSLog(@"user id is: %@", user.uid);
-                               
+                                 NSLog(@"user id is: %@\nSending To Main View", user.uid);
+                                 
                                   [self performSegueWithIdentifier:@"loginSegue" sender:nil];
                              }
                              else {
@@ -58,9 +59,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(IBAction)prepareForUnwind:(UIStoryboardSegue *)segue {
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"loginSegue"]) {
-        
+        NSLog(@"==========Segue to MainView==========");
     }
 }
 

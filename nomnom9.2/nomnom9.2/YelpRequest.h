@@ -11,6 +11,6 @@
 #import <CoreLocation/CoreLocation.h>
 
 @interface YelpRequest : NSObject
++ (NSDictionary*)makeRestaurantRequest:(NSString*)ID;
 +(NSDictionary*)makeYelpRequest:(NSString*)latitude long:(NSString*)longitude radius:(int)rad limit:(int)lim offset:(int)off;
 @end
-
