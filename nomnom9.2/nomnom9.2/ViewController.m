@@ -78,6 +78,29 @@
     NSLog(@"location got");
     [self initiate_request];
     [self.locationManager stopUpdatingLocation];
+    self.item = [self swipeGenerator:self.requests];
+    while (self.item == nil){
+        self.DescriptionBox.text = @"Loading Yums";
+        UIImage *image = [UIImage imageNamed:@"icon"];
+        [self.FoodImage setImage: image];
+        [self.FoodImage setHidden:NO];
+        [self.FoodName setHidden:NO];
+        [self.DescriptionBox setHidden:NO];
+        self.offset+=50;
+        self.requests = [[YelpRequest makeYelpRequest:self.lat long:self.lon radius:(int)[[NSUserDefaults standardUserDefaults] integerForKey:@"distance"] limit:50 offset:self.offset] mutableCopy];
+        self.item = [self swipeGenerator:self.requests];
+    }
+        [self setAll:self.item];
+
+    /*
+    while ([[self.item objectForKey: @"is_closed"] boolValue] == YES || [self.item objectForKey:@"price"] == nil) {
+        self.item = [self swipeGenerator:self.requests];
+    }
+     */
+    //[self setAll:self.item];
+    if (!self.likedFood) {
+        self.likedFood = [[NSMutableArray alloc] init];
+    }
     
 }
 
@@ -86,15 +109,7 @@
     NSLog(@"in initiate request, standeruserdaults distance is: %li", (long)[[NSUserDefaults standardUserDefaults] integerForKey:@"distance"]);
     self.requests = [[YelpRequest makeYelpRequest:self.lat long:self.lon radius:(int)[[NSUserDefaults standardUserDefaults] integerForKey:@"distance"] limit:50 offset:self.offset] mutableCopy];
     NSLog(@"here");
-    self.item = [self swipeGenerator:self.requests];
     
-    while ([[self.item objectForKey: @"is_closed"] boolValue] == YES || [self.item objectForKey:@"price"] == nil) {
-        self.item = [self swipeGenerator:self.requests];
-    }
-    [self setAll:self.item];
-    if (!self.likedFood) {
-        self.likedFood = [[NSMutableArray alloc] init];
-    }
     
     
 }
@@ -114,12 +129,25 @@
 }
 
 -(void) dislikeAct {
-
+    
     self.item = [self swipeGenerator:self.requests];
-    while ([[self.item objectForKey: @"is_closed"] boolValue] == YES || [[self.item objectForKey:@"price"] isEqual: @"(null)"]) {
+    
+    while (self.item == nil){
+        NSLog(@"item is nil here");
+        self.DescriptionBox.text = @"Loading Yums";
+        UIImage *image = [UIImage imageNamed:@"icon"];
+        [self.FoodImage setImage: image];
+        [self.FoodImage setHidden:NO];
+        [self.FoodName setHidden:NO];
+        [self.DescriptionBox setHidden:NO];
+        self.offset+=50;
+        
+        self.requests = [[YelpRequest makeYelpRequest:self.lat long:self.lon radius:(int)[[NSUserDefaults standardUserDefaults] integerForKey:@"distance"] limit:50 offset:self.offset] mutableCopy];
         self.item = [self swipeGenerator:self.requests];
     }
-    [self setAll:self.item];
+
+        [self setAll:self.item];
+
     
 }
 
@@ -197,13 +225,28 @@
     [self.LikedLabel setHidden:YES];
     [self.LikedImage setHidden:YES];
     self.item = [self swipeGenerator:self.requests];
+    while (self.item == nil){
+        self.offset+=50;
+        
+        self.DescriptionBox.text = @"Loading Yums";
+        UIImage *image = [UIImage imageNamed:@"icon"];
+        [self.FoodImage setImage: image];
+        [self.FoodImage setHidden:NO];
+        [self.FoodName setHidden:NO];
+        [self.DescriptionBox setHidden:NO];
+        self.requests = [[YelpRequest makeYelpRequest:self.lat long:self.lon radius:(int)[[NSUserDefaults standardUserDefaults] integerForKey:@"distance"] limit:50 offset:self.offset] mutableCopy];
+        self.item = [self swipeGenerator:self.requests];
+        
+    }/*
     while ([[self.item objectForKey: @"is_closed"] boolValue] == YES || [[self.item objectForKey:@"price"] isEqualToString: @"(null)"]) {
         self.item = [self swipeGenerator:self.requests];
     }
-    [self setAll:self.item];
-    [self.FoodImage setHidden:NO];
-    [self.FoodName setHidden:NO];
-    [self.DescriptionBox setHidden:NO];
+      */
+
+        [self setAll:self.item];
+        [self.FoodImage setHidden:NO];
+        [self.FoodName setHidden:NO];
+        [self.DescriptionBox setHidden:NO];
     
 }
 
@@ -224,22 +267,106 @@
         [self.DescriptionBox setHidden:NO];
         self.offset +=50;
         [self.locationManager startUpdatingLocation];
-        [self.locationManager stopUpdatingLocation];
         return nil;
         
     }
     int index = (int) arc4random_uniform(size-1);
     id key = keys[index];
     id item = [allRequests objectForKey:key];
-    NSLog(@"price is: %@", [self.item objectForKey:@"price"]);
-    
-    while (item == nil && size!=0) {
+    BOOL pass = NO;
+    //NSLog(@"price is: %@", [self.item objectForKey:@"price"]);
+    //[allRequests removeObjectForKey:key];
+    while (item!=nil && size!=0 && (!pass)) {
+        NSLog(@"in the loop, size is: %i", size);
+        pass = YES;
+        NSLog(@"name is: %@", [item objectForKey:@"name"]);
+        [allRequests removeObjectForKey:key];
+        keys = [[allRequests allKeys] mutableCopy];
+        NSString *price = [item objectForKey:@"price"];
+        int priceN = (int)price.length;
+        BOOL b =[[NSUserDefaults standardUserDefaults] boolForKey:@"OneTypeSwitch"];
+        if (b) {
+            NSString *type = [[NSUserDefaults standardUserDefaults] stringForKey:@"type"];
+            NSArray *types = [item objectForKey:@"categories"];
+            NSLog(@"type is: %@", [types[0] objectForKey:@"title"]);
+            if ([[types[0] objectForKey:@"title"] isEqualToString:type] == NO){
+                size = (int)[allRequests count];
+                if (size == 0) {
+                    break;
+                }
+                pass = NO;
+                index = (int) (arc4random() % size);
+                key = keys[index];
+                item = [allRequests objectForKey:key];
+                
+
+                continue;
+            }
+        }
+        if (priceN <= 0 || ![prices[priceN-1] boolValue]) {
+            pass = NO;
+            size = (int)[allRequests count];
+            if(size == 0) {
+                break;
+            }
+            index = (int) (arc4random() % size);
+            key = keys[index];
+            item = [allRequests objectForKey:key];
+            
+            continue;
+        }
+        if ([[self.item objectForKey: @"is_closed"] boolValue] == YES) {
+            size = (int)[allRequests count];
+            if (size == 0) {
+                break;
+            }
+            pass = NO;
+            index = (int) (arc4random() % size);
+            key = keys[index];
+            item = [allRequests objectForKey:key];
+            
+            continue;
+        }
+        NSLog(@"pass is: %i", pass);
+        
         size = (int)[allRequests count];
-        index = (int) (arc4random() % size);
-        key = keys[index];
-        item = [allRequests objectForKey:key];
+        if (size == 0 && !pass) {
+            NSLog(@"the offset is: %i", self.offset);
+            self.DescriptionBox.text = @"Loading Yums";
+            UIImage *image = [UIImage imageNamed:@"icon"];
+            [self.FoodImage setImage: image];
+            [self.FoodImage setHidden:NO];
+            [self.FoodName setHidden:NO];
+            [self.DescriptionBox setHidden:NO];
+            //[self.locationManager startUpdatingLocation];
+            return nil;
+        }
+        else if (pass) {
+            return item;
+            break;
+        }
+        else {
+            size = (int)[allRequests count];
+            keys = [[allRequests allKeys] mutableCopy];
+            index = (int) (arc4random() % size);
+            key = keys[index];
+            item = [allRequests objectForKey:key];
+        }
+        
     }
-    
+    if (size == 0) {
+        NSLog(@"the offset is: %i", self.offset);
+        self.DescriptionBox.text = @"Loading Yums";
+        UIImage *image = [UIImage imageNamed:@"icon"];
+        [self.FoodImage setImage: image];
+        [self.FoodImage setHidden:NO];
+        [self.FoodName setHidden:NO];
+        [self.DescriptionBox setHidden:NO];
+        //[self.locationManager startUpdatingLocation];
+        return nil;
+    }
+    return item;
+    /*
     NSString *price = [item objectForKey:@"price"];
     int priceN = (int)price.length;
     NSLog(@"length of prices: %tu",[prices count]);
@@ -250,7 +377,7 @@
         [keys removeObjectAtIndex:index];
         [allRequests removeObjectForKey:key];
         size = (int)[allRequests count];
-        if (size <= 0) {
+        if (size <= 0 || item == nil) {
             self.DescriptionBox.text = @"Loading Yums";
             UIImage *image = [UIImage imageNamed:@"icon"];
             [self.FoodImage setImage: image];
@@ -259,7 +386,7 @@
             [self.DescriptionBox setHidden:NO];
             self.offset +=50;
             [self.locationManager startUpdatingLocation];
-            [self.locationManager stopUpdatingLocation];
+
             return nil;
         }
         index = (int) (arc4random() % size);
@@ -268,12 +395,13 @@
         price = [item objectForKey:@"price"];
         priceN = (int)price.length;
     }
-    while (item ==nil || (prices && !prices[priceN-1])) {
+    NSLog(@"the testing price is: %i",[prices[priceN-1] boolValue]);
+     while (priceN < 1 && [prices[priceN-1] boolValue] == NO) {
         
         [allRequests removeObjectForKey:key];
         [keys removeObjectAtIndex:index];
         size = (int)[allRequests count];
-        if (size <= 0) {
+        if (size <= 0 || item == nil) {
             self.DescriptionBox.text = @"Loading Yums";
             UIImage *image = [UIImage imageNamed:@"icon"];
             [self.FoodImage setImage: image];
@@ -282,7 +410,6 @@
             [self.DescriptionBox setHidden:NO];
             self.offset +=50;
             [self.locationManager startUpdatingLocation];
-            [self.locationManager stopUpdatingLocation];
             return nil;
         }
         index = (int) (arc4random() % size);
@@ -297,12 +424,12 @@
         
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"OneTypeSwitch"]) {
         NSString *type = [[NSUserDefaults standardUserDefaults] stringForKey:@"type"];;
-        while (item ==nil || [self checkType:item :type] == NO) {
-            
-            [allRequests removeObjectForKey:key];
+        while ([self checkType:item :type] == NO) {
             [keys removeObjectAtIndex:index];
+            [allRequests removeObjectForKey:key];
+            
             size = (int)[allRequests count];
-            if (size <= 0) {
+             if (size <= 0 || item == nil) {
                 self.DescriptionBox.text = @"Loading Yums";
                 UIImage *image = [UIImage imageNamed:@"icon"];
                 [self.FoodImage setImage: image];
@@ -311,12 +438,12 @@
                 [self.DescriptionBox setHidden:NO];
                 self.offset +=50;
                 [self.locationManager startUpdatingLocation];
-                [self.locationManager stopUpdatingLocation];
                 return nil;
             }
             index = (int) (arc4random() % size);
             NSLog(@"size is: %i", size);
             NSLog(@"index is: %i", index);
+            
             key = keys[index];
             item = [allRequests objectForKey:key];
         }
@@ -324,15 +451,19 @@
     }
     
     
-    [allRequests removeObjectForKey:key];
-    [keys removeObjectAtIndex:index];
-    return item;
+    //[allRequests removeObjectForKey:key];
+    //[keys removeObjectAtIndex:index];
+     */
+    
 }
-
+/*
 -(BOOL) checkType: (NSDictionary *) business: (NSString *) type {
     BOOL hasType = NO;
     NSArray *types = [business objectForKey:@"categories"];
+    
     for (int i = 0; i < [types count]; i++) {
+        //NSLog(@"type is: %@",type);
+        //NSLog(@"category is: %@",[types[i] objectForKey:@"title"]);
         if ([[types[i] objectForKey:@"title"] isEqualToString:type]) {
             hasType = YES;
             return YES;
@@ -341,6 +472,7 @@
     }
     return hasType;
 }
+ */
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     //NSArray *likedArray =[self.likedFood copy] ;

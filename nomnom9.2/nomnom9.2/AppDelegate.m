@@ -31,7 +31,7 @@
         NSDictionary *appDefaults  = [NSDictionary dictionaryWithObjectsAndKeys:[NSDate date], dateKey, nil];
         
         // do any other initialization you want to do here - e.g. the starting default values.
-        NSMutableArray *prices = [@[@YES, @YES, @YES, @YES] mutableCopy];
+        NSArray *prices = @[[NSNumber numberWithBool:YES], [NSNumber numberWithBool:YES], [NSNumber numberWithBool:YES], [NSNumber numberWithBool:YES]];
         [[NSUserDefaults standardUserDefaults] setObject:prices forKey:@"prices"];
         // [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"should_play_sounds"];
         [[NSUserDefaults standardUserDefaults] setInteger:8000 forKey:@"distance"];//5miles?

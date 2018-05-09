@@ -33,7 +33,10 @@
     [super viewDidLoad];
     
     if ([self.segueIden isEqualToString:@"fromSaved"]) {
-        [self.saveBtn setAccessibilityElementsHidden:YES];
+        self.saveBtn.enabled = NO;
+    }
+    else {
+        self.saveBtn.enabled = YES;
     }
     self.user = [FIRAuth auth].currentUser;
     if (user) {
