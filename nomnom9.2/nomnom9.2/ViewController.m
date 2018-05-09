@@ -171,6 +171,17 @@
     imageAttachment.bounds = CGRectMake(0, imageOffsetY, imageAttachment.image.size.width, imageAttachment.image.size.height);
     NSAttributedString *attachmentString = [NSAttributedString attributedStringWithAttachment:imageAttachment];
     [description appendAttributedString:attachmentString];
+    
+    NSTextAttachment *imageAttachment2 = [[NSTextAttachment alloc] init];
+    
+    imageAttachment2.image = [UIImage imageNamed:@"Yelp_trademark_RGB"];
+    imageOffsetY = -1*imageAttachment.image.size.height*3/2.5;
+    imageAttachment2.bounds = CGRectMake(20, imageOffsetY, imageAttachment.image.size.height/imageAttachment2.image.size.height*imageAttachment2.image.size.width*3, imageAttachment.image.size.height*3);
+    attachmentString = [NSAttributedString attributedStringWithAttachment:imageAttachment2];
+    [description appendAttributedString:attachmentString];
+    //Yelp Icon
+    //Yelp_trademark_CMYK_fullcolor
+    
     //End Yelp Branding
     
     //[description appendFormat:@"%@\n", [business objectForKey:@"rating"]];
@@ -182,7 +193,7 @@
     d = d/1600;
     d = floorf(d * 100 + 0.5) / 100;
     NSNumber *distance = [NSNumber numberWithFloat:d];
-    [description appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"\nDistance:\t\t\t%@ miles",distance]]];
+    [description appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"\n\nDistance:\t\t\t%@ miles",distance]]];
     //[description appendFormat:@"Distance: %@ miles\n", distance];
     self.DescriptionBox.attributedText = description;
     self.DescriptionBox.textColor = [UIColor whiteColor];

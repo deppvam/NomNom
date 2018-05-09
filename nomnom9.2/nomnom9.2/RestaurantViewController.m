@@ -85,24 +85,34 @@
     [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[self.resto objectForKey:@"price"]]];
     [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@" · "]];
     //Price above ^
+    NSMutableAttributedString *categ = [[NSMutableAttributedString alloc] initWithString:@""];
     for(id object in [self.resto objectForKey:@"categories"]){
-        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[object objectForKey:@"title"]]];
-        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@","]];
+        if(![categ isEqualToAttributedString:[[NSMutableAttributedString alloc] initWithString:@""]]){
+            [categ appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@","]];
+        }
+        [categ appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[object objectForKey:@"title"]]];
     }
+    [details appendAttributedString:categ];
     //Categories above ^
     // address image here [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n\nAddress:\t\t"]];
     
     NSDictionary *location = [self.resto objectForKey:@"location"];
     [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n"]];
-    [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"address1"]]];
-    if([location objectForKey:@"address2"]!=nil && [[location objectForKey:@"address2"] length] != 0 ){
+    if([[location objectForKey:@"address1"] class]!=NSClassFromString(@"NSNull") && [[location objectForKey:@"address1"] length] != 0 ){
+        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"address1"]]];
+    }
+    NSLog(@"Sucessfully past: address1");
+    
+    if([[location objectForKey:@"address2"] class]!=NSClassFromString(@"NSNull") && [[location objectForKey:@"address2"] length] != 0 ){
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n"]];
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"address2"]]];
     }
-    if([location objectForKey:@"address3"]!=nil && [[location objectForKey:@"address3"] length] != 0 ){
+    if([[location objectForKey:@"address3"] class]!=NSClassFromString(@"NSNull") && [[location objectForKey:@"address3"] length] != 0 ){
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n"]];
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"address3"]]];
     }
+    NSLog(@"Sucessfully past: address3");
+    
     [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n"]];
     [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"city"]]];
     [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@","]];
@@ -112,41 +122,44 @@
     //[details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@","]];
     //[details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"country"]]];
     
-    if([location objectForKey:@"cross_streets"]!=nil && [[location objectForKey:@"cross_streets"] length] != 0 ){
+    if([[location objectForKey:@"cross_streets"] class]!=NSClassFromString(@"NSNull") && [[location objectForKey:@"cross_streets"] length] != 0 ){
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n b/t "]];
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[location objectForKey:@"cross_streets"]]];
     }
+    
+    
     //Address above^
     [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\n"]];
     [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[self.resto objectForKey:@"display_phone"]]];
     //Phone Number above^
     
-    /*
+    
     NSMutableString * transction = [[NSMutableString alloc] init];
     for(id object in [self.resto objectForKey:@"transactions"]){
         if( [object isEqualToString:@"pickup"])
         {
             [transction appendString:@"Order Pickup"];
-            [transction appendString:@","];
+            [transction appendString:@", "];
         }
         if( [object isEqualToString:@"delivery"])
         {
             [transction appendString:@"Order Delivery"];
-            [transction appendString:@","];
+            [transction appendString:@", "];
         }
         if( [object isEqualToString:@"restaurant_reservation"])
         {
             [transction appendString:@"Reservations"];
-            [transction appendString:@","];
+            [transction appendString:@", "];
         }
     }
-    if(transction!=nil && [transction length] != 0)
+    NSLog(@"transactions %@",transction);
+    if([transction class]!=NSClassFromString(@"NSNull") && [transction length] != 0)
     {
-        transction = [[NSMutableString alloc] initWithString:[@"Categories" stringByAppendingString:transction]];
-        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\nAccepts:"]];
+        transction = [[NSMutableString alloc] initWithString: [transction substringToIndex:[transction length]-2]];
+        [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"\nAccepts: "]];
         [details appendAttributedString:[[NSMutableAttributedString alloc] initWithString:transction]];
     }
-     */
+    //*/
     //Transactions ^
 
     self.detail_object.attributedText=details;

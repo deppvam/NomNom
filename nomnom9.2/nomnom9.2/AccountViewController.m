@@ -28,6 +28,11 @@
     self.emailLabel.text = self.user.email;
     
     if (user) {
+        [self.viewSavedRestaurantsBtn setUserInteractionEnabled:NO];
+        [self.viewSavedRestaurantsBtn setTitle:@"Loading Saved Restaurants" forState: UIControlStateNormal];
+        [self.viewSavedRestaurantsBtn setTitleShadowColor:[UIColor clearColor] forState:UIControlStateNormal];
+
+        
         
         self.db = [FIRFirestore firestore];
         NSLog(@"%@", self.user.uid);
@@ -39,9 +44,16 @@
             if (snapshot.exists) {
                 if ([[snapshot.data objectForKey:@"saved"] count] != 0){
                     self.saved = [snapshot.data objectForKey:@"saved"];
+                    [self.viewSavedRestaurantsBtn setUserInteractionEnabled:YES];
+                    [self.viewSavedRestaurantsBtn setTitle:@"View Saved Restaurants" forState: UIControlStateNormal];
+                    UIColor *shadowColor = [UIColor colorWithRed:(float)92./255. green:(float)28./255. blue:(float)37./255. alpha:(float)1.];
+                    [self.viewSavedRestaurantsBtn setTitleShadowColor:shadowColor forState:UIControlStateNormal];
                 }
                 else {
                     self.saved = [[NSMutableArray alloc] init];
+                    self.saved = [[NSMutableArray alloc] init];
+                    [self.viewSavedRestaurantsBtn setTitle:@"You haven't saved any restaurants yet!" forState: UIControlStateNormal];
+
                     
                 }
             } else {
