@@ -58,7 +58,7 @@
     // Do any additional setup after loading the view.
 }
 - (IBAction)distanceChange:(id)sender {
-    self.distanceValue.text = [NSString stringWithFormat:@"%f miles", self.distance.value/1.6];
+    self.distanceValue.text = [NSString stringWithFormat:@"%.02f miles", self.distance.value/1600];
 }
 
 - (void)didReceiveMemoryWarning {

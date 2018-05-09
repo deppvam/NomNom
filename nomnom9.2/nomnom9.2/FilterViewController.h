@@ -19,6 +19,6 @@
 @property (weak, nonatomic) IBOutlet UISlider *distance;
 @property (weak, nonatomic) IBOutlet UIButton *applyFilter;
 @property (weak, nonatomic) IBOutlet UILabel *distanceValue;
-@property (weak, nonatomic) NSMutableArray *liked;
+@property (strong, nonatomic) NSMutableArray *liked; //if you send something across views it should be strong?
 
 @end

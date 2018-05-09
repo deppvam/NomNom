@@ -175,10 +175,10 @@
     //[description appendFormat:[NSString@"Price: %@\n", [business objectForKey:@"price"]]];
     
     float d = [[business objectForKey:@"distance"] floatValue];
-    d = d/1600;
-    d = floorf(d * 100 + 0.5) / 100;
-    NSNumber *distance = [NSNumber numberWithFloat:d];
-    [description appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"\nDistance:\t\t\t%@ miles",distance]]];
+    d = d/1600.;
+    //d = floorf(d * 100 + 0.5) / 100; why?
+    //NSNumber *distance = [NSNumber numberWithFloat:d]; why?
+    [description appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"\nDistance:\t\t\t%.02f miles",d]]];
     //[description appendFormat:@"Distance: %@ miles\n", distance];
     self.DescriptionBox.attributedText = description;
     self.DescriptionBox.textColor = [UIColor whiteColor];
@@ -268,19 +268,22 @@
     int index = (int) arc4random_uniform(size-1);
     id key = keys[index];
     id item = [allRequests objectForKey:key];
-    NSLog(@"price is: %@", [self.item objectForKey:@"price"]);
+    NSLog(@"almos price is: %@", [self.item objectForKey:@"price"]);
     
     while (item == nil && size!=0) {
         size = (int)[allRequests count];
         index = (int) (arc4random() % size);
         key = keys[index];
         item = [allRequests objectForKey:key];
+        NSLog(@"nil/size loop");
     }
     
     NSString *price = [item objectForKey:@"price"];
+    NSLog(@"nsstring price: %@",price);
     int priceN = (int)price.length;
-    
-    while (price ==nil || price.length == 0) {
+    NSLog(@"int price: %d",priceN);
+
+    while (price == nil || price.length == 0) {
         NSLog(@"checking if there is price");
         [keys removeObjectAtIndex:index];
         [allRequests removeObjectForKey:key];
@@ -303,8 +306,8 @@
         price = [item objectForKey:@"price"];
         priceN = (int)price.length;
     }
-    
-    while ((priceN < 1 && ![prices[priceN-1] boolValue])) {
+    NSLog(@"Bool of Prices: %d", [prices[priceN-1] boolValue]);
+    while ((![prices[priceN-1] boolValue])) {
         NSLog(@"checking if price matches");
         NSLog(@"price is: %i", priceN);
         [allRequests removeObjectForKey:key];
@@ -334,13 +337,13 @@
         NSLog(@"type value is: %@", [[NSUserDefaults standardUserDefaults] stringForKey:@"type"]);
         
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"OneTypeSwitch"]) {
-        NSString *type = [[NSUserDefaults standardUserDefaults] stringForKey:@"type"];;
+        NSString *type = [[NSUserDefaults standardUserDefaults] stringForKey:@"type"];
         while ([self checkType:item :type] == NO) {
             NSLog(@"checking if type matches");
             [keys removeObjectAtIndex:index];
             [allRequests removeObjectForKey:key];
             size = (int)[allRequests count];
-            if (size <= 0 || item == nil) {
+            if (size <= 0 || item == nil) { //This is why we're LOOPING but.
                 self.DescriptionBox.text = @"Loading Yums";
                 UIImage *image = [UIImage imageNamed:@"icon"];
                 [self.FoodImage setImage: image];
@@ -372,6 +375,8 @@
     BOOL hasType = NO;
     NSArray *types = [business objectForKey:@"categories"];
     for (int i = 0; i < [types count]; i++) {
+        NSLog(@"----%@",type);
+        NSLog(@"----%@",[types[i] objectForKey:@"title"]);
         if ([[types[i] objectForKey:@"title"] isEqualToString:type]) {
             hasType = YES;
             return YES;
