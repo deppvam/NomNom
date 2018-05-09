@@ -42,17 +42,18 @@
 
 - (void)viewDidLoad {
     self.likedFood = [[[NSUserDefaults standardUserDefaults] objectForKey:@"liked"] mutableCopy];
-    
-    if ([CLLocationManager locationServicesEnabled]) {
-        self.offset = 0;
-        self.locationManager = [[CLLocationManager alloc] init];
-        self.locationManager.delegate = self;
-        [self.locationManager requestWhenInUseAuthorization];
-        [self.locationManager startMonitoringSignificantLocationChanges];
-        [self.locationManager startUpdatingLocation];
-        [self.locationManager stopUpdatingLocation];
-    } else {
-        NSLog(@"Location services are not enabled");
+    if (self.requests == nil) {
+        if ( [CLLocationManager locationServicesEnabled]) {
+            self.offset = 0;
+            self.locationManager = [[CLLocationManager alloc] init];
+            self.locationManager.delegate = self;
+            [self.locationManager requestWhenInUseAuthorization];
+            [self.locationManager startMonitoringSignificantLocationChanges];
+            [self.locationManager startUpdatingLocation];
+            [self.locationManager stopUpdatingLocation];
+        } else {
+            NSLog(@"Location services are not enabled");
+        }
     }
     
     
